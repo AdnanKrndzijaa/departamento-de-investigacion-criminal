@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 
 Flight::route('/', function() {
-    echo 'Hello world!';
+    echo 'Welcome to the Las noticias del pais';
 });
 
 Flight::start();
