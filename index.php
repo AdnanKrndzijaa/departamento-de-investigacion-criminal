@@ -5,7 +5,11 @@ Flight::route('/', function() {
     echo 'Welcome to the Las noticias del pais';
 });
 
-Flight::start();
 
+Flight::route('GET /news', function() {
+    
+});
+
+Flight::start();
 
 ?>
