@@ -115,79 +115,8 @@
                 <p class="fs-5 fw-medium text-dark">TOP NEWS</p>
                 <h1 class="display-6 mb-5">Departamento de Investigacion Criminal</h1>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item">
-                        <div class="service-text rounded p-5">
-                            <h5 class="mb-3" style="text-align: left;">Terrorism</h4>
-                            <p style="text-align: left;"><i>Date</i></p>
-                                <p class="mb-0" style="text-align: left;">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                                    stet</p>
-                        </div>
-                    </div>
-                </div>
-                
-                
+            <div class="row g-4" id="news-list">
+            
             </div>
         </div>
     </div>
@@ -280,6 +209,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        $.get("rest/news", function(data) {
+            $("#news-list").html("");
+            var html = "";
+                        
+            for (let i = data.length - 1; i>=0; i--) {
+                html += `
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item">
+                        <div class="service-text rounded p-5">
+                            <h5 class="mb-3" style="text-align: left;">`+data[i].title+`</h4>
+                            <p style="text-align: left;"><i>`+data[i].date+`</i></p>
+                                <p class="mb-0" style="text-align: left;">`+data[i].description+`</p>
+                        </div>
+                    </div>
+                </div>
+                `;
+                $("#news-list").html(html);
+            }
+        })
+
+    </script>
 </body>
 
 </html>

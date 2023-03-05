@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteBase /departamento-de-investigacion-criminal/
+RewriteBase /departamento-de-investigacion-criminal/rest/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^(.*)$ index.php [L]
