@@ -9,15 +9,16 @@ require_once 'dao/ReportsDao.class.php';
 
 require_once '../vendor/autoload.php';
 
+Flight::register('newsService', 'NewsService');
+Flight::register('wantedService', 'WantedService');
+Flight::register('reportsService', 'ReportsService');
+
 require_once __DIR__.'/routes/NewsRoutes.php';
 require_once __DIR__.'/routes/WantedRoutes.php';
 require_once __DIR__.'/routes/ReportsRoutes.php';
 
-Flight::register('newsDao', 'NewsDao');
-Flight::register('wantedDao', 'WantedDao');
-Flight::register('reportsDao', 'ReportsDao');
 
 
-
+Flight::start();
 
 ?>
