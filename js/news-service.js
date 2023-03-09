@@ -21,7 +21,7 @@ var NewsService = {
                                 <th scope="row">`+data[i].id+`</th>
                                 <td>`+data[i].title+`</td>
                                 <td>`+data[i].date+`</td>
-                                <td><img style="width: 50px; height: 40px;" src="rest/more.png" onerror="this.src='default-image.jpg'" alt=""></td>
+                                <td><img style="width: 50px; height: 40px;" src="`+data[i].image+`" alt=""></td>
                                 <td>`+data[i].description+`</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
