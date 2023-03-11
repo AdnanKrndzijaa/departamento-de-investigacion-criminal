@@ -33,7 +33,7 @@ class DICDao {
 
     public function delete($id) {
         $stmt = $this->conn->prepare("DELETE FROM ".$this->table_name." WHERE id=:id");
-        $stmt->bindParam(":id", $id); //sql injection prevention part
+        $stmt->bindParam(":id", $id);
         $stmt->execute();
     }
 
@@ -51,7 +51,7 @@ class DICDao {
         $query .= ")";
     
         $stmt= $this->conn->prepare($query);
-        $stmt->execute($entity); // sql injection prevention
+        $stmt->execute($entity);
         $entity['id'] = $this->conn->lastInsertId();
         return $entity;
     }

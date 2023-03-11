@@ -66,7 +66,7 @@ var WantedService = {
         });
     },
 
-    update: function(id) {
+    update: function() {
         $('.save-wanted-button').attr('disabled', true);
         var wanted = {};
         wanted.id = $('#id').val();
@@ -77,7 +77,7 @@ var WantedService = {
     
         $.ajax({
             contentType: "application/json",
-            url: 'rest/wanted/' + id,
+            url: 'rest/wanted/' + $('#id').val(),
             type: 'PUT',
             data: JSON.stringify(wanted),
             dataType: "json",
