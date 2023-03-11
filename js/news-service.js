@@ -31,8 +31,8 @@ var NewsService = {
                                 </td>
                               </tr>
                 `;
-                $("#news-list").html(html);
             }
+            $("#news-list").html(html);
         })
     },
 
@@ -72,8 +72,8 @@ var NewsService = {
         news.title = $('#title').val();
         news.image = $('#image').val();
         news.description = $('#description').val();
-        news.date = $('#date').val();
-
+        news.date = new Date($('#date').val()).toISOString().slice(0, 19).replace('T', ' '); // convert to ISO 8601 datetime format
+    
         $.ajax({
             contentType: "application/json",
             url: 'rest/news/' + $('#id').val(),
