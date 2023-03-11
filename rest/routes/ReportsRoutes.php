@@ -14,8 +14,10 @@ Flight::route('POST /reports', function(){
 
 Flight::route('PUT /reports/@id', function($id){
     $data = Flight::request()->data->getData();
-    $data['id'] = $id;
-    Flight::json(Flight::reportsService()->update($data));
+    if (isset($data['date'])) {
+        $data['date'] = date("Y-m-d H:i:s", strtotime($data['date']));
+    }
+    Flight::json(Flight::reportsService()->update($id, $data));
 });
 
 Flight::route('DELETE /reports/@id', function($id){

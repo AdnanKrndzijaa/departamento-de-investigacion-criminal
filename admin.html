@@ -119,6 +119,7 @@
                                 <th scope="col">Residence</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
@@ -275,61 +276,12 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/news-service.js"></script>
+    <script src="js/wanted-service.js"></script>
+    <script src="js/reports-service.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/jquery-3.6.1.min.js"></script>
 
 
-    <script>
-        $.get("rest/wanted", function(data) {
-            $("#wanted-list").html("");
-            var html = "";
-            
-            for (let i = 0; i<data.length; i++) {
-                html += `
-                <tr>
-                                <th scope="row">`+data[i].id+`</th>
-                                <td>`+data[i].first_name+`</td>
-                                <td>`+data[i].last_name+`</td>
-                                <td><img style="width: 50px; height: 40px;" src="`+data[i].image+`" alt=""></td>
-                                <td>`+data[i].description+`</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary">Edit</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                  </div>
-                                </td>                            
-                            </tr>
-                `;
-                $("#wanted-list").html(html);
-            }
-        })
-
-        $.get("rest/reports", function(data) {
-            $("#reports-list").html("");
-            var html = "";
-            
-            for (let i = 0; i<data.length; i++) {
-                html += `
-                <tr>
-                                <th scope="row">`+data[i].id+`</th>
-                                <td>`+data[i].first_name+ " " +data[i].last_name+`</td>
-                                <td>`+data[i].date_of_birth+`</td>
-                                <td>`+data[i].city+ ", " +data[i].country+`</td>
-                                <td>`+data[i].category+`</td>
-                                <td>`+data[i].description+`</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary">Solved</button>
-                                    <button type="button" class="btn btn-danger">Unsolved</button>
-                                  </div>
-                                </td>
-                            </tr>
-                `;
-                $("#reports-list").html(html);
-            }
-        })
-
-    </script>
 </body>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -337,7 +289,7 @@
         <div class="modal-content">
             <form id="addNewsForm">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add News</h5>
+                    <h5 class="modal-title">Edit news</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -361,6 +313,68 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-dark save-news-button" onclick="NewsService.update()">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalW" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit wanted person</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input name="descriptionw" id="descriptionw" type="text" class="form-control required" placeholder="Enter description">
+                    </div>
+                    <div class="form-group">
+                        <input style="margin-top: 10px;" type="text" id="imagew" name="imagew">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark save-wanted-button" onclick="WantedService.update()">Save changes</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addWantedForm">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit report status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <select class="form-select" id="status">
+                                <option value="none">None</option>
+                                <option value="in-process">In process</option>
+                                <option value="done">Done</option>
+                            </select>
+                            <label for="service">Choose a status</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark save-reports-button" onclick="ReportsService.update()">Save changes</button>
                 </div>
             </form>
         </div>
@@ -439,6 +453,8 @@
 </div>
 
 <script>NewsService.list()</script>
+<script>WantedService.list()</script>
+<script>ReportsService.list()</script>
 
 
 </html>
