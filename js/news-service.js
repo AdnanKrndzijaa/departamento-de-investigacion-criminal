@@ -58,7 +58,11 @@ var NewsService = {
             data: JSON.stringify(news),
             dataType: "json",
             success: function(result) {
-                $("#news-list").html();
+                $("#news-list").html(`
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                `)
                 NewsService.list();
                 $("#addNewsModal").modal("hide");
             }

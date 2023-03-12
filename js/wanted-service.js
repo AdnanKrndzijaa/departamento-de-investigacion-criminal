@@ -44,8 +44,8 @@ var WantedService = {
             $("#id").val(data.id);
             $("#first_name").val(data.first_name);
             $("#last_name").val(data.last_name);
-            $("#descriptionw").val(data.description);
-            $("#imagew").val(data.image);
+            $("#description").val(data.description);
+            $("#image").val(data.image);
             $("#exampleModalW").modal("show");
             $('.wanted-button').attr('disabled', false);
         });
@@ -59,7 +59,11 @@ var WantedService = {
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
-                $("#wanted-list").html();
+                $("#wanted-list").html(`
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                `);
                 WantedService.list();
                 $("#addWantedModal").modal("hide");
             }
@@ -72,8 +76,8 @@ var WantedService = {
         wanted.id = $('#id').val();
         wanted.first_name = $('#first_name').val();
         wanted.last_name = $('#last_name').val();
-        wanted.image = $('#imagew').val();
-        wanted.description = $('#descriptionw').val();
+        wanted.image = $('#image').val();
+        wanted.description = $('#description').val();
     
         $.ajax({
             contentType: "application/json",
