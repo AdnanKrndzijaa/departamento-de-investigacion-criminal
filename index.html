@@ -542,11 +542,13 @@
         <div class="modal-content" id="reportMessage">
             <form id="addReportsForm">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Report</h5>
+                    <h5 class="modal-title text-dark">REPORT INFORMATION</h5><br>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body row g-3">
-                    
+                    <p class="text-danger">Use this form to contact us or report information.
+                        <br><strong>Submit a tip, report a threat, online scam, fraud, or crime</strong></p>
                     <div class="col-6">
                         <div class="form-floating">
                             <input type="text" name="first_name" class="form-control" id="first_name" placeholder="First Name">
@@ -561,8 +563,8 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating">
-                            <input type="datetime" name="date_of_birth" class="form-control" id="date_of_birth" placeholder="Date of Birth">
-                            <label for="date_of_birth">Date of Birth</label>
+                            <input type="datetime" name="date_of_birth" class="form-control" id="date_of_birth" placeholder="yyyy-MM-dd">
+                            <label for="date_of_birth" style="font-size: 14px;">Date of Birth (yyyy-MM-dd)</label>
                         </div>
                     </div>
                     <div class="col-6">
@@ -605,7 +607,7 @@
                                 <option value="organized-crime">Organized Crime</option>
                                 <option value="drug-trafficking">Drug Trafficking</option>
                             </select>
-                            <label for="category">Choose a category</label>
+                            <label for="category">Category</label>
                         </div>
                     </div>
                     <div class="col-12">
