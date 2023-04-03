@@ -47,7 +47,7 @@ var ReportsService = {
             $('.reports-button').attr('disabled', false);
         });
     },
-/*
+
     add: function(reports) {
         $.ajax({
             contentType: "application/json",
@@ -56,12 +56,12 @@ var ReportsService = {
             data: JSON.stringify(reports),
             dataType: "json",
             success: function(result) {
-                $("#reports-list").html();
-                ReportsService.list();
-                $("#addReportsModal").modal("hide");
+                $("#reportMessage").html(`+                    
+                <p class="text-success">Tip successfully submitted. We will take it into consideration soon.</p>
+                +`);
             }
         });
-    },*/
+    },
 
     update: function() {
         $('.save-reports-button').attr('disabled', true);

@@ -1,6 +1,6 @@
 <?php
 
-Flight::route('/reports', function(){
+Flight::route('GET /reports', function(){
     Flight::json(Flight::reportsService()->get_all());
 });
 

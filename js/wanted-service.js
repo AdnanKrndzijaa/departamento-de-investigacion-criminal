@@ -59,6 +59,7 @@ var WantedService = {
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
+                console.log(result);
                 $("#wanted-list").html(`
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -78,7 +79,8 @@ var WantedService = {
         wanted.last_name = $('#last_name').val();
         wanted.image = $('#image').val();
         wanted.description = $('#description').val();
-    
+        console.log($('#description').val());
+
         $.ajax({
             contentType: "application/json",
             url: 'rest/wanted/' + $('#id').val(),
@@ -86,8 +88,14 @@ var WantedService = {
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
+                console.log(result);
+
                 $("#exampleModalW").modal("hide");
-                $("#wanted-list").html();
+                $("#wanted-list").html(`
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                `);
                 $('.save-wanted-button').attr('disabled', false);
                 WantedService.list();
             }
