@@ -20,8 +20,6 @@ Flight::route('POST /login', function(){
     } else {
         Flight::json(["message"=>"User doesn't exist"], 404);
     }
-
-
 });
 
 ?>
