@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__.'/../Config.class.php';
 
 class DICDao {
 
@@ -8,11 +9,12 @@ class DICDao {
 
     public function __construct($table_name) {
         $this->table_name = $table_name;
-        $servername = "localhost";
-        $username = "root";
-        $password = "12345adnan";
-        $schema = "dic_database";
-        $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
+        $servername = Config::DB_HOST();
+        $username = Config::DB_USERNAME();
+        $password = Config::DB_PASSWORD();
+        $schema = Config::DB_SCHEME();
+        $port = Config::DB_PORT();
+        $this->conn = new PDO("mysql:host=$servername;dbname=$schema;post=$port", $username, $password);
         // set the PDO error mode to exception
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
