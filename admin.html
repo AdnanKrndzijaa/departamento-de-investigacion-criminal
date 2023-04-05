@@ -180,7 +180,27 @@
                     </div>
                 </div>
             </div>
-            <br>  
+            <br> 
+            <div class="row g-0 feature-row bg-white" id="newsletter">
+                <div class="col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-item border h-100 p-5">
+                        <h5 class="mb-3">MANAGE NEWSLETTER</h5>
+                        <table class="table table-sm">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="newsletter-list">
+                                
+                            </tbody>
+                        </table>                    
+                    </div>
+                </div>
+            </div>
+            <br> 
             </div>
         </div>
     </div>
@@ -276,6 +296,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/news-service.js"></script>
+    <script src="js/newsletter-service.js"></script>
     <script src="js/wanted-service.js"></script>
     <script src="js/reports-service.js"></script>
     <script src="js/admin-service.js"></script>
@@ -465,6 +486,7 @@
     var token = localStorage.getItem("token");
     if (token){
         NewsService.init();
+        NewsletterService.init();
         WantedService.init();
         ReportsService.init();
     }else{
