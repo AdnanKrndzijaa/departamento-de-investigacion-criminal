@@ -17,18 +17,28 @@ var ReportsService = {
             var html = "";
             
             
-            for (let i = 0; i<data.length; i++) {
+            for (let i = data.length - 1; i>=0; i--) {
+                if (data[i].status == "finished") {
+                    var reportStatus = "success";
+                } else if (data[i].status == "canceled") {
+                    reportStatus = "danger";
+                } else if (data[i].status == null) {
+                    reportStatus = "info";
+                } else if (data[i].status == "none") {
+                    reportStatus = "info";
+                } else if (data[i].status == "in-process") {
+                    reportStatus = "secondary";
+                } else {
+                    reportStatus = "info";
+                }
                 html += `
                 <tr>
                                 <th scope="row">`+data[i].id+`</th>
                                 <td>`+data[i].first_name+ " " +data[i].last_name+`</td>
-                                <td>`+data[i].date_of_birth+`</td>
-                                <td>`+data[i].city+ ", " +data[i].country+`</td>
                                 <td>`+data[i].category+`</td>
-                                <td>`+data[i].description+`</td>
-                                <td>`+data[i].status+`</td>
+                                <td><span class="badge badge-`+reportStatus+`">` + data[i].status + `</span></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning reports-button" onClick="ReportsService.get(` + data[i].id + `)">Manage</button>
+                                    <button type="button" class="btn btn-warning reports-button" onClick="ReportsService.list_by_id(` + data[i].id + `)">Manage</button>
                                 </td>
                             </tr>
                 `;
@@ -37,12 +47,72 @@ var ReportsService = {
         })
     },
 
+    list_by_id: function(id) {
+        $('.reports-button').attr('disabled', true);
+        $('#report-item').html('loading...');
+        $.get("rest/reports/" + id, function(data) {
+            $("#id").val(data.id);
+            $("#status").val(data.status); 
+
+
+            if (data.status == "finished") {
+                var reportStatus = "success";
+            } else if (data.status == "canceled") {
+                reportStatus = "danger";
+            } else if (data.status == null) {
+                reportStatus = "info";
+            } else if (data.status == "none") {
+                reportStatus = "info";
+            } else if (data.status == "in-process") {
+                reportStatus = "secondary";
+            } else {
+                reportStatus = "info";
+            }
+
+            var html = "";
+            
+                html += `
+                
+                        <p class="list-group-item-text"><strong>ID: </strong>` + data.id + `</p>
+                        <p class="list-group-item-text"><strong>First Name: </strong>` + data.first_name + `</p>
+                        <p class="list-group-item-text"><strong>Last Name: </strong>` + data.last_name + `</p>
+                        <p class="list-group-item-text"><strong>Date of Birth: </strong>` + data.date_of_birth + `</p>
+                        <p class="list-group-item-text"><strong>Email: </strong>` + data.email + `</p>
+                        <p class="list-group-item-text"><strong>Phone: </strong>` + data.phone + `</p>
+                        <p class="list-group-item-text"><strong>City: </strong>` + data.city + `</p>
+                        <p class="list-group-item-text"><strong>Country: </strong>` + data.country + `</p>
+                        <p class="list-group-item-text"><strong>ZIP: </strong>` + data.zip + `</p>
+                        <p class="list-group-item-text"><strong>Report Category: </strong>` + data.category + `</p>
+                        <p class="list-group-item-text"><strong>Report Description: </strong>` + data.description + `</p>
+                        <p class="list-group-item-text"><strong>Status: </strong><span class="badge badge-`+reportStatus+`">` + data.status + `</span></p>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger" onclick="ReportsService.delete(`+data.id+`)">Delete report</button>
+                        </div>
+                    `;
+            
+            $("#exampleModalR").modal("show");
+            $("#report-item").html(html);
+            $('.reports-button').attr('disabled', false);
+
+        });
+    },
 
     get: function(id) {
         $('.reports-button').attr('disabled', true);
         $.get('rest/reports/' + id, function(data) {
             $("#id").val(data.id);
-            $("#status").val(data.status);           
+            $("#first_name").val(data.first_name);
+            $("#last_name").val(data.last_name);
+            $("#date_of_birth").val(data.date_of_birth);
+            $("#city").val(data.city);
+            $("#country").val(data.country);
+            $("#phone").val(data.phone);
+            $("#email").val(data.email);
+            $("#zip").val(data.zip);
+            $("#category").val(data.category);
+            $("#description").val(data.description);
+            $("#status").val(data.status); 
             $("#exampleModalR").modal("show");
             $('.reports-button').attr('disabled', false);
         });
@@ -84,7 +154,7 @@ var ReportsService = {
             }
         });
     },
-/*
+
     delete: function(id) {
         $('.reports-button').attr('disabled', true);
         $.ajax({
@@ -95,5 +165,5 @@ var ReportsService = {
                 ReportsService.list();
             }
         });
-    }*/
+    }
 }

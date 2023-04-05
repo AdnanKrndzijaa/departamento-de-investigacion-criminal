@@ -2,488 +2,631 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Admin Dashboard - DIC</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
 
-    <!-- Favicon -->
-    <link href="images/logo.png" rel="icon">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@500;700&display=swap"
-        rel="stylesheet">
+  <title>Admin Dashboard</title>
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<!-- Favicon -->
+<link href="images/logo.png" rel="icon">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@500;700&display=swap"
+    rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+<!-- Icon Font Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+   <!-- Sidebar -->
+   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+<!-- Sidebar - Brand -->
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+  <div class="sidebar-brand-icon">
+    <img class="" src="images/logo.png" alt="" style="width: 50%;">
+
+  </div>
+  <div class="sidebar-brand-text mx-3">DIC</div>
+</a>
+
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active">
+  <a class="nav-link" href="admin.html">
+    <i class="fas fa-fw fa-tachometer-alt"></i>
+    <span>Dashboard</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  SERVICES
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="admin-reports.html">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span> Reports</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="/admin-wanted.html">
+    <i class="fas fa-fw fa-male"></i>
+    <span>Wanted People</span></a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="/admin-news.html">
+    <i class="fas fa-fw fa-newspaper"></i>
+    <span>News</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  Addons
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>Pages</span>
+  </a>
+  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <h6 class="collapse-header">Login Screens:</h6>
+      <a class="collapse-item" href="login.html">Login</a>
+      <a class="collapse-item" href="register.html">Register</a>
+      <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+      <div class="collapse-divider"></div>
+      <h6 class="collapse-header">Other Pages:</h6>
+      <a class="collapse-item" href="404.html">404 Page</a>
+      <a class="collapse-item" href="blank.html">Blank Page</a>
     </div>
-    <!-- Spinner End -->
+  </div>
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item">
+  <a class="nav-link" href="charts.html">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span>Charts</span></a>
+</li>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+  <a class="nav-link" href="tables.html">
+    <i class="fas fa-fw fa-table"></i>
+    <span>Tables</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+  <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+
+</ul>
+<!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          
 
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark text-white d-none d-lg-flex">
-        <div class="container py-3">
-            <div class="d-flex align-items-center" style="float: left; width: 60px;">
-                <a href="admin.html">
-                    <img class="" src="images/logo.png" alt="" style="width: 100%;">
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            
+
+          
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  
+               ADMIN
+                  
+                </span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
                 </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button style="background-color: #1C2035;" type="button" class="btn btn-primary" onclick="AdminService.logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Begin Page Content -->
+<div class="container-fluid" id="admin-content">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+          class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+  
+    <!-- Content Row -->
+    <div class="row" id="dashboard-cards">
+  
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Total Wanted People</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800" id="wanted-a">
+
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-people-carry fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Reports</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800" id="report-a">
+
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-chart-bar fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Newsletter Emails</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800" id="newsletter-a">
+
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-envelope fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total News</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800" id="news-a">
+
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-2 text-center">
+        <div class="col-sm-12" id="reports-progress">
+          <div class="spinner-border" style="margin: auto; width: 100px; height: 100px;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+  </div>
+      
+  </div>
+
+  <!-- Content Row -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+<script src="js/admin-service.js"></script>
+<script src="js/news-service.js"></script>
+<script src="js/reports-service.js"></script>
+<script src="js/wanted-service.js"></script>
+<script src="js/newsletter-service.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery-3.6.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+  
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Departamento de Investigacion Criminal 2023</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+      </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+    </div>
+    <!-- End of Content Wrapper -->
+
+
+    <script>
+      $.get("rest/wanted", function(data) {
+            $("#wanted-a").html("");
+            var html = "";
+            var wanted = 0;
+            
+            for (let i = 0; i<data.length; i++) {
+              wanted++;
+            }
+
+                html += `
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 25px;">`+wanted+`</div>
+                    `;
                 
-            </div>
-            <div class="d-flex align-items-center" style="margin-top: auto; margin-bottom: auto; margin: auto; margin-left: 5px; width: 50%; padding: 10px;">
-                <a href="admin.html">
-                    <h2 class="text-white fw-bold m-0">Departamento de Investigacion Criminal</h2>
-                </a>
+                $("#wanted-a").html(html);
+  
+        });
+
+        $.get("rest/reports", function(data) {
+            $("#report-a").html("");
+            var html = "";
+            var reports = 0;
+            
+            for (let i = 0; i<data.length; i++) {
+              reports++;
+            }
+
+                html += `
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 25px;">`+reports+`</div>
+                    `;
                 
-            </div>
-        </div>
-        
+                $("#report-a").html(html);
+  
+        });
 
-    </div>
-    <!-- Topbar End -->
+        $.get("rest/news", function(data) {
+            $("#news-a").html("");
+            var html = "";
+            var news = 0;
+            
+            for (let i = 0; i<data.length; i++) {
+              news++;
+            }
+
+                html += `
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 25px;">`+news+`</div>
+                    `;
+                
+                $("#news-a").html(html);
+  
+        });
+
+        $.get("rest/newsletter", function(data) {
+            $("#newsletter-a").html("");
+            var html = "";
+            var newsletter = 0;
+            
+            for (let i = 0; i<data.length; i++) {
+              newsletter++;
+            }
+
+                html += `
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 25px;">`+newsletter+`</div>
+                    `;
+                
+                $("#newsletter-a").html(html);
+  
+        });
 
 
-    <!-- Navbar Start -->
-    <div class="container-fluid bg-white sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg  navbar-light p-lg-0">
-                <div class="d-flex align-items-center navbar-brand d-lg-none" style="float: left; width: 60px;">
-                    <a href="admin.html">
-                        <img class="" src="images/logo.png" alt="" style="width: 100%;">
-                    </a>
-                    
-                </div>
-                <a href="admin.html" class="navbar-brand d-lg-none">
-                    <h1 class="fw-bold text-dark m-0">ADMIN DIC</h1>
-                </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon" style="color: white;"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav">
-                        <a href="#reports" class="nav-item nav-link">Manage Reports</a>
-                        <a href="#wanted-people" class="nav-item nav-link">Manage Wanted People</a>
-                        <a href="#news" class="nav-item nav-link">Manage News</a>
-                        
+        $.get("rest/news", function(data) {
+            $("#breaking-news").html("");
+            var html = "";
+            var a = "";
+            if (data.length > 5) {
+                a = data.length - 5;
+            } else {
+                a = 0;
+            }
+            
+            for (let i = data.length - 1; i>=a; i--) {
+                if (i == data.length -1) {
+                    html += `
+                    <div class="carousel-item active">
+                        <img class="w-100" src="`+data[i].image+`" alt="Image">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <div class="row justify-content- bottom-50">
+                                    <div class="col-lg-12 text-start">
+                                        <h1 class="display-4 text-white mb-4 animated slideInRight"><strong>`+data[i].title+`</strong></h1>
+                                        <a href="news.html" class="btn btn-dark rounded-pill py-3 px-5 animated slideInRight">See More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ms-auto d-lg-block">
-                        <button class="btn btn-danger rounded-pill py-2 px-3"  type="button" onclick="AdminService.logout()">LOGOUT</button>
+                    `;
+                } else {
+                    html += `
+                    <div class="carousel-item">
+                        <img class="w-100" src="`+data[i].image+`" alt="Image">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <div class="row justify-content- bottom-50">
+                                    <div class="col-lg-12 text-start">
+                                        <h1 class="display-4 text-white mb-4 animated slideInRight"><strong>`+data[i].title+`</strong></h1>
+                                        <a href="news.html" class="btn btn-dark rounded-pill py-3 px-5 animated slideInRight">See More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End -->
+                    `;
+                }
+                
+                $("#breaking-news").html(html);
+            }
+        });
 
-    <!-- Admin Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-medium text-dark">ADMIN DASHBOARD</p>
-                <h1 class="display-5 mb-5">Welcome back, check new updates!</h1>
-            </div>
-            <div class="row g-0 feature-row bg-white" id="reports">
-                <div class="col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="feature-item border h-100 p-5">
-                        <h5 class="mb-3">MANAGE REPORTS</h5>
+        $.get("rest/reports", function(data) {
+            $("#reports-progress").html("");
+            var html = "";
+            var ter = 0;
+            var cyc = 0;
+            var pcor = 0;
+            var civr = 0;
+            var orgc = 0;
+            var drut = 0;
+            
+            var n = 0;
+            var in_process = 0;
+            var done = 0;
+            var canc = 0;
+            
+            for (let i = 0; i<data.length; i++) {
+                if(data[i].category == "terrorism") {
+                    ter+= 1;
+                } else if(data[i].category == "cyber-crime") {
+                    cyc+= 1;
+                } else if(data[i].category == "public-corruption") {
+                    pcor+= 1;
+                } else if(data[i].category == "civil-rights") {
+                    civr+= 1;
+                } else if(data[i].category == "organized-crime") {
+                    orgc+= 1;
+                } else if(data[i].category == "drug-trafficking") {
+                    drut+= 1;
+                }
+            };
 
-                        <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Birth</th>
-                                <th scope="col">Residence</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody id="reports-list">
-                            
-                            </tbody>
-                        </table>                    
+            for (let i = 0; i<data.length; i++) {
+                if(data[i].status == "none" || data[i].status == null) {
+                    n+= 1;
+                } else if(data[i].status == "in-process") {
+                    in_process+= 1;
+                } else if(data[i].status == "finished") {
+                    done+= 1;
+                } else if(data[i].status == "canceled") {
+                    canc+= 1;
+                }
+            };
+
+            var tp = ((ter/data.length)*100).toFixed(2);
+            var ccp = ((cyc/data.length)*100).toFixed(2);
+            var pcp = ((pcor/data.length)*100).toFixed(2);
+            var crp = ((civr/data.length)*100).toFixed(2);
+            var ocp = ((orgc/data.length)*100).toFixed(2);
+            var dtp = ((drut/data.length)*100).toFixed(2);
+
+            var n_p = ((n/data.length)*100).toFixed(2);
+            var in_process_p = ((in_process/data.length)*100).toFixed(2);
+            var done_p = ((done/data.length)*100).toFixed(2);
+            var canc_p = ((canc/data.length)*100).toFixed(2);
+
+                html += `
+                    <div class="progress mb-3" style="height: 30px;">
+                        <div class="progress-bar" role="progressbar" style="width: `+tp+`%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">`+tp+`%</div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: `+ccp+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+ccp+`%</div>
+                        <div class="progress-bar bg-info" role="progressbar" style="width: `+pcp+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+pcp+`%</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: `+crp+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+crp+`%</div>
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: `+ocp+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+ocp+`%</div>
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: `+dtp+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+dtp+`%</div>
+
                     </div>
-                </div>
-            </div>
-            <br>
-            <div class="row g-0 feature-row bg-white" id="wanted-people">
-                <div class="col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="feature-item border h-100 p-5">
-                        <h5 class="mb-3">MANAGE WANTED PEOPLE</h5>
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addWantedModal">Add New</button>
-                        <br><br>
-                        <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Picture</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody id="wanted-list">
-                            
-                            </tbody>
-                        </table>                    
+                    <div class="row g-5 pt-2 mb-5">
+                        <div class="col-sm-4">
+                            <span class="text-primary" style="font-size: 1.1rem;"><strong>Terrorism</strong></span><br>
+                            <span class="text-danger" style="font-size: 1.1rem;"><strong>Cyber Crime</strong></span>
+                        </div>                            
+                        <div class="col-sm-4">
+                            <span class="text-info" style="font-size: 1.1rem;"><strong>Public Corruption</strong></span><br>  
+                            <span class="text-success" style="font-size: 1.1rem;"><strong>Civil Rights</strong></span>
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="text-warning" style="font-size: 1.1rem;"><strong>Organized Crime</strong></span><br>
+                            <span class="text-dark" style="font-size: 1.1rem;"><strong>Drug Trafficking</strong></span> 
+                        </div>
                     </div>
-                </div>
-            </div>
-            <br>
-            <div class="row g-0 feature-row bg-white" id="news">
-                <div class="col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="feature-item border h-100 p-5">
-                        <h5 class="mb-3">MANAGE NEWS</h5>
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add New</button>
-                        <br><br>
-                        <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Picture</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody id="news-list">
-                                
-                            </tbody>
-                        </table>                    
+                    <br>
+                    <div class="progress mb-3" style="height: 30px;">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: `+n_p+`%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">`+n_p+`%</div>
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: `+in_process_p+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+in_process_p+`%</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: `+done_p+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+done_p+`%</div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: `+canc_p+`%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">`+canc_p+`%</div>
+
                     </div>
-                </div>
-            </div>
-            <br> 
-            <div class="row g-0 feature-row bg-white" id="newsletter">
-                <div class="col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="feature-item border h-100 p-5">
-                        <h5 class="mb-3">MANAGE NEWSLETTER</h5>
-                        <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody id="newsletter-list">
-                                
-                            </tbody>
-                        </table>                    
+                    <div class="row g-4 pt-2 mb-5">
+                        <div class="col-sm-3">
+                            <span class="text-dark" style="font-size: 1.1rem;"><strong>No Action</strong></span><br>
+                        </div>                            
+                        <div class="col-sm-3">
+                            <span class="text-warning" style="font-size: 1.1rem;"><strong>In Process</strong></span><br>  
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="text-success" style="font-size: 1.1rem;"><strong>Finished</strong></span><br>
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="text-danger" style="font-size: 1.1rem;"><strong>Canceled</strong></span><br>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <br> 
-            </div>
-        </div>
-    </div>
-    <!-- Admin End -->
+                `;
+                $("#reports-progress").html(html);
+            
+        });
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Our Office</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-3">
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+        $.get("rest/wanted", function(data) {
+            $("#recently-wanted").html("");
+            var html = "";
+            var a = "";
+            if (data.length > 2) {
+                a = data.length - 2;
+            } else {
+                a = 0;
+            }
+            
+            for (let i = data.length - 1; i>=a; i--) {
+                    html += `
+                    <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item rounded bg-danger overflow-hidden pb-4">
+                            <img class="img-fluid mb-4" style="float: left; width: 100%; height: 450px; object-fit: cover;" src="`+data[i].image+`" alt="">
+                            <h5 class="text-white">`+data[i].first_name + " " + data[i].last_name+`</h5>
+                            <span class="text-light">`+data[i].description+`</span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Business Hours</h4>
-                    <p class="mb-1">Monday - Friday</p>
-                    <h6 class="text-light">09:00 am - 07:00 pm</h6>
-                    <p class="mb-1">Saturday</p>
-                    <h6 class="text-light">09:00 am - 12:00 pm</h6>
-                    <p class="mb-1">Sunday</p>
-                    <h6 class="text-light">Closed</h6>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative w-100">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Your email">
-                        <button type="button"
-                            class="btn btn-light py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+                    `;
+                
+                
+                $("#recently-wanted").html(html);
+            }
+        });
+    
 
+    </script>
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="fw-medium text-light" href="#">Your Site Name</a>, All Right Reserved.
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="fw-medium text-light" href="https://htmlcodex.com">HTML Codex</a>
-                    Distributed By <a class="fw-medium text-light" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Copyright End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-danger btn-lg-square rounded-circle back-to-top"><i
-            class="bi bi-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script src="js/news-service.js"></script>
-    <script src="js/newsletter-service.js"></script>
-    <script src="js/wanted-service.js"></script>
-    <script src="js/reports-service.js"></script>
-    <script src="js/admin-service.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/jquery-3.6.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-
-
-
+    
 </body>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit news</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
-                    </div>
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input name="title" id="title" type="text" class="form-control required" placeholder="Enter title">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-                    </div>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input name="date" id="date" type="datetime" class="form-control required" placeholder="Date">
-                    </div>
-                    <div class="form-group">
-                        <input style="margin-top: 10px;" type="text" id="image" name="image">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark save-news-button" onclick="NewsService.update()">Save changes</button>
-                </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModalW" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit wanted person</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
-                    </div>
-                    <div class="form-group">
-                        <label>First name</label>
-                        <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
-                    </div>
-                    <div class="form-group">
-                        <label>Last name</label>
-                        <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-                    </div>
-                    <div class="form-group">
-                        <input style="margin-top: 10px;" type="text" id="image" name="image">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark save-wanted-button" onclick="WantedService.update()">Save changes</button>
-                </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModalR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit report status</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="form-group">
-                            <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
-                        </div>
-                        <div class="form-floating">
-                            <select class="form-select" id="status">
-                                <option value="none">None</option>
-                                <option value="in-process">In process</option>
-                                <option value="solved">Solved</option>
-                            </select>
-                            <label for="service">Choose a status</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark save-reports-button" onclick="ReportsService.update()">Save changes</button>
-                </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="addNewsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="addNewsForm">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add News</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input name="title" id="title" type="text" class="form-control required" placeholder="Enter title">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-                    </div>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input name="date" id="date" type="datetime" class="form-control required" placeholder="Date">
-                    </div>
-                    <div class="form-group">
-                        <input style="margin-top: 10px;" type="text" id="image" name="image">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark ">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="addWantedModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="addWantedForm">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Wanted Person</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-
-                    </div>
-                    <div class="form-group">
-                        <input style="margin-top: 10px;" type="text" id="image" name="image">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <script>
-    var token = localStorage.getItem("token");
+  var token = localStorage.getItem("token");
     if (token){
         NewsService.init();
         NewsletterService.init();
@@ -492,8 +635,6 @@
     }else{
         window.location.replace("login.html");
     }
-
 </script>
-
 
 </html>
