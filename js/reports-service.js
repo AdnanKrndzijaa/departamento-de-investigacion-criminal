@@ -87,7 +87,7 @@ var ReportsService = {
                         <p class="list-group-item-text"><strong>Status: </strong><span class="badge badge-`+reportStatus+`">` + data.status + `</span></p>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger" onclick="ReportsService.delete(`+data.id+`)">Delete report</button>
+                            <button type="submit" class="btn btn-circle btn-danger" onclick="ReportsService.delete(`+data.id+`)"><i class="fas fa-trash"></i></button>
                         </div>
                     `;
             

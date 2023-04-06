@@ -20,14 +20,13 @@ var WantedService = {
                 html += `
                 <tr>
                                 <th scope="row">`+data[i].id+`</th>
-                                <td>`+data[i].first_name+`</td>
-                                <td>`+data[i].last_name+`</td>
+                                <td>`+data[i].first_name+" "+data[i].last_name+`</td>
                                 <td><img style="width: 50px; height: 40px;" src="`+data[i].image+`" alt=""></td>
                                 <td>`+data[i].description+`</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary wanted-button" onClick="WantedService.get(` + data[i].id + `)">Edit</button>
-                                    <button type="button" class="btn btn-danger wanted-button" onClick="WantedService.delete(` + data[i].id + `)">Delete</button>
+                                    <button type="button" class="btn btn-primary wanted-button" onClick="WantedService.get(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger wanted-button" onClick="WantedService.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
                                   </div>
                                 </td>                            
                             </tr>
