@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Wanted - Admin Dashboard</title>
+  <title>News - Admin Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -85,13 +85,13 @@
   </a>
 </li>
 
-<li class="nav-item active">
+<li class="nav-item">
   <a class="nav-link" href="admin-wanted.html">
     <i class="fas fa-fw fa-male"></i>
     <span>Wanted People</span></a>
 </li>
 
-<li class="nav-item">
+<li class="nav-item active">
   <a class="nav-link" href="admin-news.html">
     <i class="fas fa-fw fa-newspaper"></i>
     <span>News</span></a>
@@ -229,9 +229,9 @@
 <div class="container-fluid" id="admin-content">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Wanted People</h1>
+      <h1 class="h3 mb-0 text-gray-800">News</h1>
       <div>
-        <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addWantedModal">Add wanted person</button>
+        <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addNewsModal">Add news</button>
 
         <button id="print-btn" onclick="window.print()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate data</button>
@@ -253,13 +253,14 @@
                       <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Picture</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Picture</Picture></th>
                           <th scope="col">Description</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
-                      <tbody id="wanted-list">
+                      <tbody id="news-list">
                         
                       </tbody>
                   </table>  
@@ -301,7 +302,7 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
-<script src="js/wanted-service.js"></script>
+<script src="js/news-service.js"></script>
 <script src="js/admin-service.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery-3.6.1.min.js"></script>
@@ -332,11 +333,11 @@
     
 </body>
 
-<div class="modal fade" id="exampleModalW" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title">Edit wanted person</h5>
+                  <h5 class="modal-title">Edit news</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -344,16 +345,16 @@
                       <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
                   </div>
                   <div class="form-group">
-                      <label>First name</label>
-                      <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
-                  </div>
-                  <div class="form-group">
-                      <label>Last name</label>
-                      <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Title</label>
+                      <input name="title" id="title" type="text" class="form-control required" placeholder="Enter title">
                   </div>
                   <div class="form-group">
                       <label>Description</label>
                       <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
+                  </div>
+                  <div class="form-group">
+                      <label>Date</label>
+                      <input name="date" id="date" type="datetime" class="form-control required" placeholder="Date">
                   </div>
                   <div class="form-group">
                       <input style="margin-top: 10px;" type="text" id="image" name="image">
@@ -362,33 +363,32 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-dark save-wanted-button" onclick="WantedService.update()">Save changes</button>
+                  <button type="submit" class="btn btn-dark save-news-button" onclick="NewsService.update()">Save changes</button>
               </div>
       </div>
   </div>
 </div>
 
-<div class="modal fade" id="addWantedModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="addNewsModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <form id="addWantedForm">
+          <form id="addNewsForm">
               <div class="modal-header">
-                  <h5 class="modal-title">Add Wanted Person</h5>
+                  <h5 class="modal-title">Add News</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                   <div class="form-group">
-                      <label>First Name</label>
-                      <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
-                  </div>
-                  <div class="form-group">
-                      <label>Last Name</label>
-                      <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Title</label>
+                      <input name="title" id="title" type="text" class="form-control required" placeholder="Enter title">
                   </div>
                   <div class="form-group">
                       <label>Description</label>
                       <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-
+                  </div>
+                  <div class="form-group">
+                      <label>Date</label>
+                      <input name="date" id="date" type="datetime" class="form-control required" placeholder="Date">
                   </div>
                   <div class="form-group">
                       <input style="margin-top: 10px;" type="text" id="image" name="image">
@@ -397,7 +397,7 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-dark">Save changes</button>
+                  <button type="submit" class="btn btn-dark ">Save changes</button>
               </div>
           </form>
       </div>
@@ -407,7 +407,7 @@
 <script>
   var token = localStorage.getItem("token");
     if (token){
-        WantedService.init();
+        NewsService.init();
     }else{
         window.location.replace("login.html");
     }
