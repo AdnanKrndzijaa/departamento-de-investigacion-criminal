@@ -97,46 +97,10 @@
     <span>News</span></a>
 </li>
 
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Heading -->
-<div class="sidebar-heading">
-  Addons
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-    <i class="fas fa-fw fa-folder"></i>
-    <span>Pages</span>
-  </a>
-  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Login Screens:</h6>
-      <a class="collapse-item" href="login.html">Login</a>
-      <a class="collapse-item" href="register.html">Register</a>
-      <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-      <div class="collapse-divider"></div>
-      <h6 class="collapse-header">Other Pages:</h6>
-      <a class="collapse-item" href="404.html">404 Page</a>
-      <a class="collapse-item" href="blank.html">Blank Page</a>
-    </div>
-  </div>
-</li>
-
-<!-- Nav Item - Charts -->
-<li class="nav-item">
-  <a class="nav-link" href="charts.html">
-    <i class="fas fa-fw fa-chart-area"></i>
-    <span>Charts</span></a>
-</li>
-
-<!-- Nav Item - Tables -->
-<li class="nav-item">
-  <a class="nav-link" href="tables.html">
-    <i class="fas fa-fw fa-table"></i>
-    <span>Tables</span></a>
+  <a class="nav-link" href="admin-newsletter.html">
+    <i class="fas fa-fw fa-envelope"></i>
+    <span>Newsletter</span></a>
 </li>
 
 <!-- Divider -->
@@ -340,25 +304,26 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <div class="form-group">
-                      <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
-                  </div>
-                  <div class="form-group">
-                      <label>First name</label>
+                  <div class="form-floating">
                       <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
-                  </div>
-                  <div class="form-group">
+                      <label>First name</label>
+                    </div>
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
                       <label>Last name</label>
-                      <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                    </div>
+                    <div class="form-floating">
+                      <textarea class="form-control required" name="description" placeholder="Enter description" id="description"
+                          style="margin-top: 10px; height: 130px"></textarea>
+                      <label for="description">Description</label>
                   </div>
-                  <div class="form-group">
-                      <label>Description</label>
-                      <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-                  </div>
-                  <div class="form-group">
-                      <input style="margin-top: 10px;" type="text" id="image" name="image">
-                  </div>
-
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" style="margin-top: 10px;" type="text" id="image" name="image" class="form-control required">
+                      <label>Image</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
+                    </div>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
@@ -377,22 +342,23 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <div class="form-group">
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
                       <label>First Name</label>
-                      <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
-                  </div>
-                  <div class="form-group">
+                    </div>
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
                       <label>Last Name</label>
-                      <input name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                    </div>
+                    <div class="form-floating">
+                      <textarea class="form-control required" name="description" placeholder="Enter description" id="description"
+                          style="margin-top: 10px; height: 130px"></textarea>
+                      <label for="description">Description</label>
                   </div>
-                  <div class="form-group">
-                      <label>Description</label>
-                      <input name="description" id="description" type="text" class="form-control required" placeholder="Enter description">
-
-                  </div>
-                  <div class="form-group">
-                      <input style="margin-top: 10px;" type="text" id="image" name="image">
-                  </div>
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" type="text" id="image" name="image" class="form-control required" placeholder="Enter image (.png/.jpg)">
+                      <label>Image (.png/.jpg)</label>
+                    </div>
 
               </div>
               <div class="modal-footer">

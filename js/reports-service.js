@@ -38,7 +38,7 @@ var ReportsService = {
                                 <td>`+data[i].category+`</td>
                                 <td><span class="badge badge-`+reportStatus+`">` + data[i].status + `</span></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning reports-button" onClick="ReportsService.list_by_id(` + data[i].id + `)">Manage</button>
+                                    <button type="button" class="btn btn-warning btn-circle reports-button" onClick="ReportsService.list_by_id(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
                 `;

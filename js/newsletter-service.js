@@ -15,14 +15,14 @@ var NewsletterService = {
         $.get("rest/newsletter", function(data) {
             $("#newsletter-list").html("");
             var html = "";
-            for (let i = 0; i<data.length; i++) {
+            for (let i = data.length-1; i>=0; i--) {
                 html += `
                 <tr>
                                 <th scope="row">`+data[i].id+`</th>
                                 <td>`+data[i].email+`</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-danger news-button" onClick="NewsletterService.delete(` + data[i].id + `)">Delete</button>
+                                    <button type="button" class="btn btn-danger news-button" onClick="NewsletterService.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
                                   </div>
                                 </td>
                               </tr>

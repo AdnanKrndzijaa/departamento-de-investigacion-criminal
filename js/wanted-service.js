@@ -16,12 +16,12 @@ var WantedService = {
             $("#wanted-list").html("");
             var html = "";
             
-            for (let i = 0; i<data.length; i++) {
+            for (let i = data.length-1; i>=0; i--) {
                 html += `
                 <tr>
                                 <th scope="row">`+data[i].id+`</th>
                                 <td>`+data[i].first_name+" "+data[i].last_name+`</td>
-                                <td><img style="width: 50px; height: 40px;" src="`+data[i].image+`" alt=""></td>
+                                <td><img style="width: 50px; height: 40px;" src="images/wanted/`+data[i].image+`" alt=""></td>
                                 <td>`+data[i].description+`</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">

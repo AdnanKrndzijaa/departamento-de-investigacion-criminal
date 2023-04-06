@@ -21,12 +21,12 @@ var NewsService = {
                                 <th scope="row">`+data[i].id+`</th>
                                 <td>`+data[i].title+`</td>
                                 <td>`+data[i].date+`</td>
-                                <td><img style="width: 50px; height: 40px;" src="`+data[i].image+`" alt=""></td>
+                                <td><img style="width: 50px; height: 40px;" src="images/news/`+data[i].image+`" alt=""></td>
                                 <td>`+data[i].description+`</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary news-button" onClick="NewsService.get(` + data[i].id + `)"><i class="fas fa-edit"></button>
-                                    <button type="button" class="btn btn-danger news-button" onClick="NewsService.delete(` + data[i].id + `)"><i class="fas fa-trash"></button>
+                                    <button type="button" class="btn btn-primary news-button" onClick="NewsService.get(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger news-button" onClick="NewsService.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
                                   </div>
                                 </td>
                               </tr>
