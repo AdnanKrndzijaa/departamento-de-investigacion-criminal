@@ -214,6 +214,24 @@
                 </div>
               </div>
               <div class="col-auto">
+                <i class="fas fa-male fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Missing People</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800" id="missing-a">
+
+                </div>
+              </div>
+              <div class="col-auto">
                 <i class="fas fa-people-carry fa-2x text-gray-300"></i>
               </div>
             </div>
@@ -404,6 +422,23 @@
                     `;
                 
                 $("#newsletter-a").html(html);
+  
+        });
+
+        $.get("rest/missing", function(data) {
+            $("#missing-a").html("");
+            var html = "";
+            var missing = 0;
+            
+            for (let i = 0; i<data.length; i++) {
+              missing++;
+            }
+
+                html += `
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 25px;">`+missing+`</div>
+                    `;
+                
+                $("#missing-a").html(html);
   
         });
 
@@ -602,6 +637,7 @@
         NewsletterService.init();
         WantedService.init();
         ReportsService.init();
+        MissingService.init();
     }else{
         window.location.replace("login.html");
     }
