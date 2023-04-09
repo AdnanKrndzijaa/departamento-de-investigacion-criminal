@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Reports - Admin Dashboard</title>
+  <title>Missing - Admin Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -78,7 +78,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item active">
+<li class="nav-item">
   <a class="nav-link collapsed" href="admin-reports.html">
     <i class="fas fa-fw fa-chart-area"></i>
     <span> Reports</span>
@@ -91,7 +91,7 @@
     <span>Wanted People</span></a>
 </li>
 
-<li class="nav-item">
+<li class="nav-item active">
   <a class="nav-link" href="admin-missing.html">
     <i class="fas fa-fw fa-people-carry"></i>
     <span>Missing People</span></a>
@@ -199,10 +199,14 @@
 <div class="container-fluid" id="admin-content">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Reports</h1>
-      <button id="print-btn" onclick="window.print()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-          class="fas fa-download fa-sm text-white-50"></i> Generate data</button>
-    </div>
+      <h1 class="h3 mb-0 text-gray-800">Missing People</h1>
+      <div>
+        <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addMissingModal">Add missing person</button>
+
+        <button id="print-btn" onclick="window.print()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate data</button>
+      </div>
+  </div>
   
     <!-- Content Row -->
     <div class="row" id="dashboard-cards">
@@ -220,12 +224,12 @@
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Status</th>
+                          <th scope="col">Picture</th>
+                          <th scope="col">Disappearance</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
-                      <tbody id="reports-list">
+                      <tbody id="missing-list">
                         
                       </tbody>
                   </table>  
@@ -267,10 +271,7 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
-<script src="js/news-service.js"></script>
-<script src="js/newsletter-service.js"></script>
-<script src="js/wanted-service.js"></script>
-<script src="js/reports-service.js"></script>
+<script src="js/missing-service-index.js"></script>
 <script src="js/admin-service.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery-3.6.1.min.js"></script>
@@ -296,100 +297,131 @@
     <!-- End of Content Wrapper -->
 
 
-    <script>
-      $.get("rest/admin", function(data) {
-            $("#dashboard-cards").html("");
-            var html = "";
-            var admin = 0;
-            var employee = 0;
-            
-            for (let i = 0; i<data.length - 1; i--) {
-                if (data[i].type == "admin") {
-                    admin++;
-                } else {
-                    employee++;
-                }
-
-                html += `
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered Admin</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                              <h4>Total Admin: `+admin+`</h4>
-
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Registered Employees</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                              <h4>Total Admin: `+employee+`</h4>
-
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    `;
-                
-                $("#dashboard-cards").html(html);
-            }
-        });
-
-    </script>
+    
 
     
 </body>
 
-<div class="modal fade" id="exampleModalR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title">Report</h5>
+                  <h5 class="modal-title">Edit missing person</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <div class="list-group" id="report-item">
-
-                </div>
-                <div class="form-group">
-                  <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
-              </div>
-                <div class="form-group">
                   <div class="form-floating">
-                  <select class="form-select" id="status">
-                      <option value="none">None</option>
-                      <option value="in-process">In process</option>
-                      <option value="finished">Finished</option>
-                      <option value="canceled">Canceled</option>
-                      
-                  </select>
-                  <label for="service">Choose a status</label>
-              </div>
+                      <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
+                      <label>First name</label>
+                    </div>
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Last name</label>
+                    </div>
+                    <div class="form-floating">
+                      <input style="margin-top: 10px;" name="place_of_birth" id="place_of_birth" type="text" class="form-control required" placeholder="Enter place of birth">
+                      <label>Place of Birth</label>
+                    </div>
+                    <div class="form-floating">
+                      <input style="margin-top: 10px;" name="date_of_birth" id="date_of_birth" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Date of Birth</label>
+                    </div>
+                    <div class="form-floating">
+                      <input style="margin-top: 10px;" name="last_place_seen" id="last_place_seen" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Place of Disappearance</label>
+                    </div>
+                    <div class="form-floating">
+                      <input style="margin-top: 10px;" name="last_time_seen" id="last_time_seen" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Date of Disappearance</label>
+                    </div>
+                    <div class="form-floating">
+                      <input style="margin-top: 10px;" name="contact" id="contact" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Contact phone</label>
+                    </div>
+                    <div class="form-floating">
+                      <textarea class="form-control required" name="description" placeholder="Enter description" id="description"
+                          style="margin-top: 10px; height: 130px"></textarea>
+                      <label for="description">Description</label>
+                  </div>
+                    <div class="form-floating">
+                      <input style="margin-top: 10px;" name="physical_chars" id="physical_chars" type="text" class="form-control required" placeholder="Enter last name">
+                      <label>Physical characteristics</label>
+                    </div>
+                    
+                  <div class="form-floating">
+                      <input style="margin-top: 10px;" style="margin-top: 10px;" type="text" id="image" name="image" class="form-control required">
+                      <label>Image</label>
+                  </div>
+                    <div class="form-group">
+                      <input type="hidden" name="id" id="id" class="form-control required" placeholder="Enter description">
+                    </div>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-dark save-reports-button" onclick="ReportsService.update()">Save changes</button>
+                  <button type="submit" class="btn btn-dark save-missing-button" onclick="MissingServiceIndex.update()">Save changes</button>
               </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addMissingModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form id="addMissingForm">
+              <div class="modal-header">
+                  <h5 class="modal-title">Add Missing Person</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-floating">
+                  <input name="first_name" id="first_name" type="text" class="form-control required" placeholder="Enter first name">
+                  <label>First name</label>
+                </div>
+              <div class="form-floating">
+                  <input style="margin-top: 10px;" name="last_name" id="last_name" type="text" class="form-control required" placeholder="Enter last name">
+                  <label>Last name</label>
+                </div>
+                <div class="form-floating">
+                  <input style="margin-top: 10px;" name="place_of_birth" id="place_of_birth" type="text" class="form-control required" placeholder="Enter place of birth">
+                  <label>Place of Birth</label>
+                </div>
+                <div class="form-floating">
+                  <input style="margin-top: 10px;" name="date_of_birth" id="date_of_birth" type="text" class="form-control required" placeholder="Enter last name">
+                  <label>Date of Birth</label>
+                </div>
+                <div class="form-floating">
+                  <input style="margin-top: 10px;" name="last_place_seen" id="last_place_seen" type="text" class="form-control required" placeholder="Enter last name">
+                  <label>Place of Disappearance</label>
+                </div>
+                <div class="form-floating">
+                  <input style="margin-top: 10px;" name="last_time_seen" id="last_time_seen" type="text" class="form-control required" placeholder="Enter last name">
+                  <label>Date of Disappearance</label>
+                </div>
+                <div class="form-floating">
+                  <input style="margin-top: 10px;" name="contact" id="contact" type="text" class="form-control required" placeholder="Enter last name">
+                  <label>Contact phone</label>
+                </div>
+                <div class="form-floating">
+                  <textarea class="form-control required" name="description" placeholder="Enter description" id="description"
+                      style="margin-top: 10px; height: 130px"></textarea>
+                  <label for="description">Description</label>
+              </div>
+                <div class="form-floating">
+                  <input style="margin-top: 10px;" name="physical_chars" id="physical_chars" type="text" class="form-control required" placeholder="Enter last name">
+                  <label>Physical characteristics</label>
+                </div>
+                
+              <div class="form-floating">
+                  <input style="margin-top: 10px;" style="margin-top: 10px;" type="text" id="image" name="image" class="form-control required">
+                  <label>Image</label>
+              </div>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-dark">Save changes</button>
+              </div>
+          </form>
       </div>
   </div>
 </div>
@@ -397,7 +429,7 @@
 <script>
   var token = localStorage.getItem("token");
     if (token){
-        ReportsService.init();
+        MissingServiceIndex.init();
     }else{
         window.location.replace("login.html");
     }
