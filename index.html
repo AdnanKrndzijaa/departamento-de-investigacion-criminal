@@ -514,7 +514,7 @@
         $.get("rest/missing", function(data) {
             $("#missing-people").html("");
             var html = "";
-            var a = "";
+            var a = 0;
             if (data.length > 2) {
                 a = data.length - 2;
             } else {
@@ -522,27 +522,30 @@
             }
             
             for (let i = data.length - 1; i>=a; i--) {
+                
+                
                 var dateStr = data[i].last_time_seen;
                 var date = new Date(dateStr);
                 var options = { month: 'short', day: 'numeric', year: 'numeric' };
                 var formattedDate = date.toLocaleDateString('en-US', options);
-
-                    html += `
-                    <div class="col-lg-4 col-md-6 col-sm-9">
-                        <div class="rounded bg-dark overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" style="float: left; width: 100%; height: 350px; object-fit: cover;" src="images/missing/`+data[i].image+`" alt="">
-                            <div style="margin-left: 20px; margin-right: 20px;">
-                                <span class="text-info"><strong>MISSING</strong></span><br>
-                                <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
-                                <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDate + `</span>
+                if (data[i].status != "found") {
+                    
+                        html += `
+                        <div class="col-lg-4 col-md-6 col-sm-9">
+                            <div class="rounded bg-dark overflow-hidden pb-4">
+                                <img class="img-fluid mb-4" style="float: left; width: 100%; height: 350px; object-fit: cover;" src="images/missing/`+data[i].image+`" alt="">
+                                <div style="margin-left: 20px; margin-right: 20px;">
+                                    <span class="text-info"><strong>MISSING</strong></span><br>
+                                    <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
+                                    <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDate + `</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    `;
-                
+                        `;
+                    }
                 
                 $("#missing-people").html(html);
-            }
+        }
         });
     
     </script>

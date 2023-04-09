@@ -22,20 +22,22 @@ var MissingService = {
                 var dateP = new Date(dateStrP);
                 var optionsP = { month: 'short', day: 'numeric', year: 'numeric' };
                 var formattedDateP = dateP.toLocaleDateString('en-US', optionsP);
-                html += `
-                <div class="col-lg-3 col-md-6 col-sm-9">
-                        <div class="rounded bg-dark overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" style="float: left; width: 100%; height: 350px; object-fit: cover;" src="images/missing/`+data[i].image+`" alt="">
-                            <div style="margin-left: 20px; margin-right: 20px;">
-                                <span class="text-info"><strong>MISSING</strong></span><br>
-                                <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
-                                <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDateP + `</span>
-                                <br>
-                                <button type="button" class="btn btn-info missing-button justify-content-end" onClick="MissingService.list_by_id(` + data[i].id + `)">View</button>
+                if (data[i].status != "found") {
+                    html += `
+                    <div class="col-lg-3 col-md-6 col-sm-9">
+                            <div class="rounded bg-dark overflow-hidden pb-4">
+                                <img class="img-fluid mb-4" style="float: left; width: 100%; height: 350px; object-fit: cover;" src="images/missing/`+data[i].image+`" alt="">
+                                <div style="margin-left: 20px; margin-right: 20px;">
+                                    <span class="text-info"><strong>MISSING</strong></span><br>
+                                    <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
+                                    <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDateP + `</span>
+                                    <br>
+                                    <button type="button" class="btn btn-info missing-button justify-content-end" onClick="MissingService.list_by_id(` + data[i].id + `)">View</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
                 $("#missing-list").html(html);
             }
         })
@@ -58,11 +60,8 @@ var MissingService = {
             var options = { month: 'short', day: 'numeric', year: 'numeric' };
             var formattedDate = date.toLocaleDateString('en-US', options);
 
-            if (data.status == "found") {
-                var status = "success";
-            }
-
-            var html = "";
+            
+                var html = "";
             
                 html += `
                 
@@ -77,6 +76,9 @@ var MissingService = {
                         <p class="list-group-item-text"><strong>Physical Charasteristics: </strong>` + data.physical_chars + `</p>
                         
                     `;
+            
+
+            
             
             $("#exampleModalM").modal("show");
             $("#missing-item").html(html);

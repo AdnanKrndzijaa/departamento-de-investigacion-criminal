@@ -102,6 +102,7 @@ var MissingServiceIndex = {
             $("#description").val(data.description);
             $("#physical_chars").val(data.physical_chars);
             $("#image").val(data.image);
+            $("#status").val(data.status);
             $("#exampleModalM").modal("show");
             $('.missing-button').attr('disabled', false);
         });
@@ -134,8 +135,14 @@ var MissingServiceIndex = {
         missing.first_name = $('#first_name').val();
         missing.last_name = $('#last_name').val();
         missing.image = $('#image').val();
+        missing.date_of_birth = $('#date_of_birth').val();
+        missing.place_of_birth = $('#place_of_birth').val();
+        missing.last_place_seen = $('#last_place_seen').val();
+        missing.last_time_seen = $('#last_time_seen').val();
+        missing.contact = $('#contact').val();
+        missing.physical_chars = $('#physical_chars').val();
+        missing.status = $('#status').val();
         missing.description = $('#description').val();
-        console.log($('#description').val());
 
         $.ajax({
             contentType: "application/json",
