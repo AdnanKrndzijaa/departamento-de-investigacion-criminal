@@ -6,6 +6,31 @@
     --dark: #1C2035;
 }
 
+body {
+    background-image: url(../images/bg.png); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
+
+@media (max-width: 991.98px) {
+    body {
+        background-image: url(../images/bg2.png); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-image: url(../images/bg3.png); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+    }
+}
+
 .back-to-top {
     position: fixed;
     display: none;
