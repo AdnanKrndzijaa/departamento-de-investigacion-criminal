@@ -16,24 +16,73 @@ var MissingService = {
             $("#missing-list").html("");
             var html = "";
             
-            for (let i = data.length-1; i>=0; i--) {
+            
+            for (let i = data.length - 1; i>=0; i--) {
+                var dateStrP = data[i].last_time_seen;
+                var dateP = new Date(dateStrP);
+                var optionsP = { month: 'short', day: 'numeric', year: 'numeric' };
+                var formattedDateP = dateP.toLocaleDateString('en-US', optionsP);
                 html += `
-                <tr>
-                                <th scope="row">`+data[i].id+`</th>
-                                <td>`+data[i].first_name+" "+data[i].last_name+`</td>
-                                <td><img style="width: 50px; height: 40px;" src="images/wanted/`+data[i].image+`" alt=""></td>
-                                <td>`+data[i].description+`</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary wanted-button" onClick="WantedService.get(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger wanted-button" onClick="WantedService.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
-                                  </div>
-                                </td>                            
-                            </tr>
+                <div class="col-lg-3 col-md-6 col-sm-9">
+                        <div class="rounded bg-dark overflow-hidden pb-4">
+                            <img class="img-fluid mb-4" style="float: left; width: 100%; height: 350px; object-fit: cover;" src="images/missing/`+data[i].image+`" alt="">
+                            <div style="margin-left: 20px; margin-right: 20px;">
+                                <span class="text-info"><strong>MISSING</strong></span><br>
+                                <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
+                                <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDateP + `</span>
+                                <br>
+                                <button type="button" class="btn btn-info missing-button justify-content-end" onClick="MissingService.list_by_id(` + data[i].id + `)">View</button>
+                            </div>
+                        </div>
+                    </div>
                 `;
                 $("#missing-list").html(html);
             }
         })
+    },
+    
+    list_by_id: function(id) {
+        $('.missing-button').attr('disabled', true);
+        $('#missing-item').html('loading...');
+        $.get("rest/missing/" + id, function(data) {
+            $("#id").val(data.id);
+            $("#status").val(data.status); 
+
+            var dateStrS = data.last_time_seen;
+            var dateS = new Date(dateStrS);
+            var optionsS = { month: 'short', day: 'numeric', year: 'numeric' };
+            var formattedDateS = dateS.toLocaleDateString('en-US', optionsS);
+
+            var dateStr = data.date_of_birth;
+            var date = new Date(dateStr);
+            var options = { month: 'short', day: 'numeric', year: 'numeric' };
+            var formattedDate = date.toLocaleDateString('en-US', options);
+
+            if (data.status == "found") {
+                var status = "success";
+            }
+
+            var html = "";
+            
+                html += `
+                
+                        <img class="rounded w-50" src="images/missing/`+data.image+`" alt="Image"><br>
+                        <p class="list-group-item-text"><strong>ID: </strong>` + data.id + `</p>
+                        <p class="list-group-item-text"><strong>First Name: </strong>` + data.first_name + `</p>
+                        <p class="list-group-item-text"><strong>Last Name: </strong>` + data.last_name + `</p>
+                        <p class="list-group-item-text"><strong>Place and Date of Birth: </strong>` +data.place_of_birth+ ", " + formattedDate + `</p>
+                        <p class="list-group-item-text"><strong>Disappearance: </strong> `+data.last_place_seen+ " - " + formattedDateS + `</p>
+                        <p class="list-group-item-text"><strong>Contact: </strong>` + data.contact + `</p>
+                        <p class="list-group-item-text"><strong>Description: </strong>` + data.description + `</p>
+                        <p class="list-group-item-text"><strong>Physical Charasteristics: </strong>` + data.physical_chars + `</p>
+                        
+                    `;
+            
+            $("#exampleModalM").modal("show");
+            $("#missing-item").html(html);
+            $('.missing-button').attr('disabled', false);
+            
+        });
     },
 
 
@@ -43,9 +92,15 @@ var MissingService = {
             $("#id").val(data.id);
             $("#first_name").val(data.first_name);
             $("#last_name").val(data.last_name);
+            $("#date_of_birth").val(data.date_of_birth);
+            $("#place_of_birth").val(data.place_of_birth);
+            $("#last_time_seen").val(data.last_time_seen);
+            $("#last_place_seen").val(data.last_place_seen);
+            $("#contact").val(data.contact);
             $("#description").val(data.description);
+            $("#physical_chars").val(data.physical_chars);
             $("#image").val(data.image);
-            $("#exampleModalW").modal("show");
+            $("#exampleModalM").modal("show");
             $('.missing-button').attr('disabled', false);
         });
     },
