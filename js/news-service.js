@@ -15,6 +15,13 @@ var NewsService = {
         $.get("rest/news", function(data) {
             $("#news-list").html("");
             var html = "";
+
+            data.sort(function(a, b) {
+                var dateA = new Date(a.date);
+                var dateB = new Date(b.date);
+                return dateA - dateB;
+            });
+            
             for (let i = data.length-1; i>=0; i--) {
                 html += `
                 <tr>

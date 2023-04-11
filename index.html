@@ -373,6 +373,12 @@
             } else {
                 a = 0;
             }
+
+            data.sort(function(a, b) {
+                var dateA = new Date(a.date);
+                var dateB = new Date(b.date);
+                return dateA - dateB;
+            });
             
             for (let i = data.length - 1; i>=a; i--) {
                 if (i == data.length -1) {

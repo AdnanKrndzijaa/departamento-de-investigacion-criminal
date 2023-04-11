@@ -24,7 +24,8 @@ var MissingService = {
                 var formattedDateP = dateP.toLocaleDateString('en-US', optionsP);
                 if (data[i].status != "found") {
                     html += `
-                    <div class="col-lg-3 col-md-6 col-sm-9">
+                    <div class="col-lg-3 col-md-6 col-sm-9" >
+                        <a href="#" onclick="event.preventDefault(); MissingService.list_by_id(` + data[i].id + `)">
                             <div class="rounded bg-dark overflow-hidden pb-4">
                                 <img class="img-fluid mb-4" style="float: left; width: 100%; height: 350px; object-fit: cover;" src="images/missing/`+data[i].image+`" alt="">
                                 <div style="margin-left: 20px; margin-right: 20px;">
@@ -32,9 +33,9 @@ var MissingService = {
                                     <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
                                     <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDateP + `</span>
                                     <br>
-                                    <button type="button" class="btn btn-info missing-button justify-content-end" onClick="MissingService.list_by_id(` + data[i].id + `)">View</button>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     `;
                 }

@@ -10,6 +10,10 @@ class NewsService extends DICService{
         parent::__construct(new NewsDao());
     }
 
+    public function get_by_date($date) {
+        return $this->dao->get_by_date($date);
+    }
+
 }
 
 ?>

@@ -8,6 +8,10 @@ Flight::route('GET /news/@id', function($id){
     Flight::json(Flight::newsService()->get_by_id($id));
 });
 
+Flight::route('GET /news/@date', function($date){
+    Flight::json(Flight::newsService()->get_by_date($date));
+});
+
 Flight::route('POST /news', function(){
     Flight::json(Flight::newsService()->add(Flight::request()->data->getData()));
 });
