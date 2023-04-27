@@ -20,12 +20,13 @@ var AdminService = {
         contentType: "application/json",
         dataType: "json",
         success: function(result) {
-          console.log(result);
           localStorage.removeItem("token");
           localStorage.setItem("token", result.token);
           window.location.replace("admin.html");
+
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
+          alert(XMLHttpRequest.responseJSON.message);
         }
       });
     },

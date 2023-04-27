@@ -12,7 +12,13 @@ var WantedService = {
     },
 
     list: function() {
-        $.get("rest/wanted", function(data) {
+        $.ajax({
+            url: "rest/wanted",
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#wanted-list").html("");
             var html = "";
             
@@ -33,13 +39,19 @@ var WantedService = {
                 `;
                 $("#wanted-list").html(html);
             }
-        })
+        }})
     },
 
 
     get: function(id) {
         $('.wanted-button').attr('disabled', true);
-        $.get('rest/wanted/' + id, function(data) {
+        $.ajax({
+            url: "rest/wanted/" + id,
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#id").val(data.id);
             $("#first_name").val(data.first_name);
             $("#last_name").val(data.last_name);
@@ -47,7 +59,7 @@ var WantedService = {
             $("#image").val(data.image);
             $("#exampleModalW").modal("show");
             $('.wanted-button').attr('disabled', false);
-        });
+        }});
     },
 
     add: function(wanted) {
@@ -55,6 +67,9 @@ var WantedService = {
             contentType: "application/json",
             url: 'rest/wanted',
             type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
@@ -66,6 +81,14 @@ var WantedService = {
                 `);
                 WantedService.list();
                 $("#addWantedModal").modal("hide");
+                setTimeout(function(){
+                    $('#addWantedModal').modal('hide');
+                    $('.modal-backdrop').remove();  
+                    $('#addWantedModal input[name="first_name"]').val("");
+                    $('#addWantedModal input[name="last_name"]').val("");
+                    $('#addWantedModal textarea[name="description"]').val("");
+                    $('#addWantedModal input[name="image"]').val("");
+                }, 500); // delay for 500ms
             }
         });
     },
@@ -84,6 +107,9 @@ var WantedService = {
             contentType: "application/json",
             url: 'rest/wanted/' + $('#id').val(),
             type: 'PUT',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
@@ -106,6 +132,9 @@ var WantedService = {
         $.ajax({
             url: 'rest/wanted/' + id,
             type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             success: function(result) {
                 $("#wanted-list").html();
                 WantedService.list();

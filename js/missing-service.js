@@ -12,7 +12,13 @@ var MissingService = {
     },
 
     list: function() {
-        $.get("rest/missing", function(data) {
+        $.ajax({
+            url: "rest/missing",
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#missing-list").html("");
             var html = "";
             
@@ -41,13 +47,19 @@ var MissingService = {
                 }
                 $("#missing-list").html(html);
             }
-        })
+        }})
     },
     
     list_by_id: function(id) {
         $('.missing-button').attr('disabled', true);
         $('#missing-item').html('loading...');
-        $.get("rest/missing/" + id, function(data) {
+        $.ajax({
+            url: 'rest/missing/' + id,
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
+            success: function(data) {
             $("#id").val(data.id);
             $("#status").val(data.status); 
 
@@ -85,13 +97,19 @@ var MissingService = {
             $("#missing-item").html(html);
             $('.missing-button').attr('disabled', false);
             
-        });
+        }});
     },
 
 
     get: function(id) {
         $('.missing-button').attr('disabled', true);
-        $.get('rest/missing/' + id, function(data) {
+        $.ajax({
+            url: 'rest/missing/' + id,
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
+            success: function(data) {
             $("#id").val(data.id);
             $("#first_name").val(data.first_name);
             $("#last_name").val(data.last_name);
@@ -105,7 +123,7 @@ var MissingService = {
             $("#image").val(data.image);
             $("#exampleModalM").modal("show");
             $('.missing-button').attr('disabled', false);
-        });
+        }});
     },
 
     add: function(missing) {

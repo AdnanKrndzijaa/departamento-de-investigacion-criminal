@@ -12,7 +12,13 @@ var NewsletterService = {
     },
 
     list: function() {
-        $.get("rest/newsletter", function(data) {
+        $.ajax({
+            url: "rest/newsletter",
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#newsletter-list").html("");
             var html = "";
             for (let i = data.length-1; i>=0; i--) {
@@ -29,7 +35,7 @@ var NewsletterService = {
                 `;
             }
             $("#newsletter-list").html(html);
-        })
+        }})
     },
 
 
@@ -60,6 +66,9 @@ var NewsletterService = {
         $.ajax({
             url: 'rest/newsletter/' + id,
             type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             success: function(result) {
                 $("#newsletter-list").html();
                 NewsletterService.list();

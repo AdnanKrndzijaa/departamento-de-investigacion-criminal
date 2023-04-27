@@ -12,7 +12,13 @@ var MissingServiceIndex = {
     },
 
     list: function() {
-        $.get("rest/missing", function(data) {
+        $.ajax({
+            url: 'rest/missing',
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
+            success: function(data) {
             $("#missing-list").html("");
             var html = "";
             
@@ -38,7 +44,7 @@ var MissingServiceIndex = {
                 `;
                 $("#missing-list").html(html);
             }
-        })
+        }})
     },
 
     
@@ -46,7 +52,13 @@ var MissingServiceIndex = {
     list_by_id: function(id) {
         $('.missing-button').attr('disabled', true);
         $('#missing-item').html('loading...');
-        $.get("rest/missing/" + id, function(data) {
+        $.ajax({
+            url: "rest/missing/" + id,
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#id").val(data.id);
             $("#status").val(data.status); 
 
@@ -84,13 +96,19 @@ var MissingServiceIndex = {
             $("#missing-item").html(html);
             $('.missing-button').attr('disabled', false);
             
-        });
+        }});
     },
 
 
     get: function(id) {
         $('.missing-button').attr('disabled', true);
-        $.get('rest/missing/' + id, function(data) {
+        $.ajax({
+            url: 'rest/missing/' + id,
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
+            success: function(data) {
             $("#id").val(data.id);
             $("#first_name").val(data.first_name);
             $("#last_name").val(data.last_name);
@@ -105,7 +123,7 @@ var MissingServiceIndex = {
             $("#status").val(data.status);
             $("#exampleModalM").modal("show");
             $('.missing-button').attr('disabled', false);
-        });
+        }});
     },
 
     add: function(missing) {
@@ -113,6 +131,9 @@ var MissingServiceIndex = {
             contentType: "application/json",
             url: 'rest/missing',
             type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(missing),
             dataType: "json",
             success: function(result) {
@@ -124,6 +145,22 @@ var MissingServiceIndex = {
                 `);
                 MissingServiceIndex.list();
                 $("#addMissingModal").modal("hide");
+                setTimeout(function(){
+                    $('#addMissingModal').modal('hide');
+                    $('.modal-backdrop').remove();  
+                    $('#addMissingModal input[name="first_name"]').val("");
+                    $('#addMissingModal input[name="last_name"]').val("");
+                    $('#addMissingModal textarea[name="description"]').val("");
+                    $('#addMissingModal input[name="date_of_birth"]').val("");
+                    $('#addMissingModal input[name="place_of_birth"]').val("");
+                    $('#addMissingModal input[name="last_time_seen"]').val("");
+                    $('#addMissingModal input[name="last_place_seen"]').val("");
+                    $('#addMissingModal input[name="contact"]').val("");
+                    $('#addMissingModal input[name="physical_chars"]').val("");
+                    $('#addMissingModal input[name="image"]').val("");
+                    $('#addMissingModal input[name="status"]').val("");
+                }, 500); // delay for 500ms
+                  
             }
         });
     },
@@ -148,6 +185,9 @@ var MissingServiceIndex = {
             contentType: "application/json",
             url: 'rest/missing/' + $('#id').val(),
             type: 'PUT',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(missing),
             dataType: "json",
             success: function(result) {
@@ -170,6 +210,9 @@ var MissingServiceIndex = {
         $.ajax({
             url: 'rest/missing/' + id,
             type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             success: function(result) {
                 $("#missing-list").html();
                 MissingServiceIndex.list();

@@ -12,41 +12,57 @@ var NewsService = {
     },
 
     list: function() {
-        $.get("rest/news", function(data) {
-            $("#news-list").html("");
-            var html = "";
-
-            data.sort(function(a, b) {
-                var dateA = new Date(a.date);
-                var dateB = new Date(b.date);
-                return dateA - dateB;
-            });
-            
-            for (let i = data.length-1; i>=0; i--) {
-                html += `
-                <tr>
-                                <th scope="row">`+data[i].id+`</th>
-                                <td>`+data[i].title+`</td>
-                                <td>`+data[i].date+`</td>
-                                <td><img style="width: 50px; height: 40px;" src="images/news/`+data[i].image+`" alt=""></td>
-                                <td>`+data[i].description+`</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-primary news-button" onClick="NewsService.get(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger news-button" onClick="NewsService.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
-                                  </div>
-                                </td>
-                              </tr>
-                `;
+        $.ajax({
+            url: "rest/news",
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
+                $("#news-list").html("");
+                var html = "";
+    
+                data.sort(function(a, b) {
+                    var dateA = new Date(a.date);
+                    var dateB = new Date(b.date);
+                    return dateA - dateB;
+                });
+                
+                for (let i = data.length-1; i>=0; i--) {
+                    html += `
+                    <tr>
+                                    <th scope="row">`+data[i].id+`</th>
+                                    <td>`+data[i].title+`</td>
+                                    <td>`+data[i].date+`</td>
+                                    <td><img style="width: 50px; height: 40px;" src="images/news/`+data[i].image+`" alt=""></td>
+                                    <td>`+data[i].description+`</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-primary news-button" onClick="NewsService.get(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger news-button" onClick="NewsService.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                    `;
+                }
+                $("#news-list").html(html);
+            },
+            error: function () {
+              AdminService.logout();
             }
-            $("#news-list").html(html);
-        })
+          });
     },
 
 
     get: function(id) {
         $('.news-button').attr('disabled', true);
-        $.get('rest/news/' + id, function(data) {
+        $.ajax({
+            url: 'rest/news/' + id,
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
+            success: function(data) {
             $("#id").val(data.id);
             $("#title").val(data.title);
             $("#image").val(data.image);
@@ -54,7 +70,7 @@ var NewsService = {
             $("#date").val(data.date);
             $("#exampleModal").modal("show");
             $('.news-button').attr('disabled', false);
-        });
+        }});
     },
 
     add: function(news) {
@@ -62,6 +78,9 @@ var NewsService = {
             contentType: "application/json",
             url: 'rest/news',
             type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(news),
             dataType: "json",
             success: function(result) {
@@ -72,6 +91,15 @@ var NewsService = {
                 `)
                 NewsService.list();
                 $("#addNewsModal").modal("hide");
+                setTimeout(function(){
+                    $('#addNewsModal').modal('hide');
+                    $('.modal-backdrop').remove();                    
+                    $('#addNewsModal input[name="title"]').val("");
+                    $('#addNewsModal textarea[name="description"]').val("");
+                    $('#addNewsModal input[name="image"]').val("");
+                    $('#addNewsModal input[name="date"]').val("");
+                }, 500); // delay for 500ms
+                
             }
         });
     },
@@ -89,6 +117,9 @@ var NewsService = {
             contentType: "application/json",
             url: 'rest/news/' + $('#id').val(),
             type: 'PUT',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(news),
             dataType: "json",
             success: function(result) {
@@ -105,6 +136,9 @@ var NewsService = {
         $.ajax({
             url: 'rest/news/' + id,
             type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             success: function(result) {
                 $("#news-list").html();
                 NewsService.list();

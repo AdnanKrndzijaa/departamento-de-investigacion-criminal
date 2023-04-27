@@ -12,7 +12,13 @@ var ReportsService = {
     },
 
     list: function() {
-        $.get("rest/reports", function(data) {
+        $.ajax({
+            url: "rest/reports",
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#reports-list").html("");
             var html = "";
             
@@ -44,13 +50,19 @@ var ReportsService = {
                 `;
                 $("#reports-list").html(html);
             }
-        })
+    }})
     },
 
     list_by_id: function(id) {
         $('.reports-button').attr('disabled', true);
         $('#report-item').html('loading...');
-        $.get("rest/reports/" + id, function(data) {
+        $.ajax({
+            url: "rest/reports/" + id,
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#id").val(data.id);
             $("#status").val(data.status); 
 
@@ -95,12 +107,18 @@ var ReportsService = {
             $("#report-item").html(html);
             $('.reports-button').attr('disabled', false);
 
-        });
+    }});
     },
 
     get: function(id) {
         $('.reports-button').attr('disabled', true);
-        $.get('rest/reports/' + id, function(data) {
+        $.ajax({
+            url: "rest/reports/" + id,
+            type: "GET",
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
             $("#id").val(data.id);
             $("#first_name").val(data.first_name);
             $("#last_name").val(data.last_name);
@@ -115,7 +133,7 @@ var ReportsService = {
             $("#status").val(data.status); 
             $("#exampleModalR").modal("show");
             $('.reports-button').attr('disabled', false);
-        });
+        }});
     },
 
     add: function(reports) {
@@ -144,6 +162,9 @@ var ReportsService = {
             contentType: "application/json",
             url: 'rest/reports/' + $('#id').val(),
             type: 'PUT',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             data: JSON.stringify(reports),
             dataType: "json",
             success: function(result) {
@@ -160,6 +181,9 @@ var ReportsService = {
         $.ajax({
             url: 'rest/reports/' + id,
             type: 'DELETE',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+              },
             success: function(result) {
                 $("#reports-list").html();
                 ReportsService.list();
