@@ -103,7 +103,7 @@ var ReportsService = {
                         </div>
                     `;
             
-            $("#exampleModalR").modal("show");
+            $('#exampleModalR').modal('show');
             $("#report-item").html(html);
             $('.reports-button').attr('disabled', false);
 
@@ -168,7 +168,11 @@ var ReportsService = {
             data: JSON.stringify(reports),
             dataType: "json",
             success: function(result) {
-                $("#exampleModalR").modal("hide");
+                setTimeout(function(){
+                    $('#exampleModalR').modal("hide");
+                    $('.modal-backdrop').remove();  
+                    
+                }, 500); // delay for 500ms
                 $("#reports-list").html();
                 $('.save-reports-button').attr('disabled', false);
                 ReportsService.list();
