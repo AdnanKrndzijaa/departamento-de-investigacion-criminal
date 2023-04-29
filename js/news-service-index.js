@@ -75,35 +75,36 @@ var NewsServiceIndex = {
             type: 'GET',
             
             success: function(data) {
-            $("#id").val(data.id);
+                $("#id").val(data.id);
 
-            var dateStr = data.date;
-            var date = new Date(dateStr);
-            var options = { month: 'short', day: 'numeric', year: 'numeric' };
-            var formattedDate = date.toLocaleDateString('en-US', options);
+                var dateStr = data.date;
+                var date = new Date(dateStr);
+                var options = { month: 'short', day: 'numeric', year: 'numeric' };
+                var formattedDate = date.toLocaleDateString('en-US', options);
 
-            
-                var html = "";
-            
-                html += `
                 
-                        <div style="width: 100%;">
-                            <img style="width: 100%; max-height: 400px; object-fit: cover;" class="rounded" src="images/news/`+data.image+`" alt="Image"><br>
-                        </div><br>
-                        <p style="font-size: 12px;" class="list-group-item-text"><i>` + formattedDate + `</i></p>
-                        <p style="font-size: 30px;" class="list-group-item-text"><strong>` +data.title+ `</strong></p>
-                        <p class="list-group-item-text">`+data.description+`</p>
-                        
-                    `;
-            
+                    var html = "";
+                
+                    html += `
+                    
+                            <div style="width: 100%;">
+                                <img style="width: 100%; max-height: 400px; object-fit: cover;" class="rounded" src="images/news/`+data.image+`" alt="Image"><br>
+                            </div><br>
+                            <p style="font-size: 12px;" class="list-group-item-text"><i>` + formattedDate + `</i></p>
+                            <p style="font-size: 30px;" class="list-group-item-text"><strong>` +data.title+ `</strong></p>
+                            <p class="list-group-item-text">`+data.description+`</p>
+                            
+                        `;
+                
 
-            
-            
-            $("#exampleModalN").modal("show");
-            $("#news-item").html(html);
-            $('.news-button').attr('disabled', false);
-            
-        }});
+                
+                
+                $("#exampleModalN").show();
+                $("#news-item").html(html);
+                $('.news-button').attr('disabled', false);
+                
+            }
+        });
     },
 
 
