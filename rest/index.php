@@ -3,6 +3,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/services/NewsService.class.php';
 require_once __DIR__.'/services/ReportsService.class.php';
@@ -20,11 +23,9 @@ Flight::register('missingService', 'MissingService');
 
 
 Flight::map('error', function(Exception $ex){
-        // Handle exception
-        Flight::json(['message' => $ex->getMessage()], 500);
-    
+  // Handle exception
+  Flight::json(['message' => $ex->getMessage()], 500);  
 });
-
 
 /* utility function for reading query parameters from URL */
 Flight::map('query', function($name, $default_value = NULL){
@@ -34,28 +35,35 @@ Flight::map('query', function($name, $default_value = NULL){
   return urldecode($query_param);
 });
 
-Flight::route('/*', function(){
-  //return TRUE;
-  //perform JWT decode
+Flight::map('header', function($name){
+  $headers = getallheaders();
+  return @$headers[$name];
+});
+
+
+  Flight::route('/locked/*', function(){
+      
+    /*
   $path = Flight::request()->url;
-  if (preg_match('/^\/(login|login.html|news(?:\/\d+)?|missing(?:\/\d+)?|wanted(?:\/\d+)?|newsletter)|(POST \/reports)$/', $path)) {
+  if (preg_match('/^\/(login|login.html|news(?:\/\d+)?|missing(?:\/\d+)?|wanted(?:\/\d+)?|newsletter|reports)$/', $path)) {
     return TRUE; // exclude certain routes from middleware
   }
-  $headers = getallheaders();
-  if (@!$headers['Authorization']){
-    Flight::json(["message" => "Authorization is missing"], 403);
-    return FALSE;
-  }else{
-    try {
-      $decoded = (array)JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
-      Flight::set('user', $decoded);
-      error_log('User decoded and set: ' . print_r($decoded, true)); // Add debug statement
-      return TRUE;
-    } catch (\Exception $e) {
-      Flight::json(["message" => "Authorization token is not valid"], 403);
-      return FALSE;
+  */
+
+    $headers = getallheaders();
+    if (@!$headers['Authorization']){
+        Flight::json(["message" => "Unauthorized access"], 403);
+        return FALSE;
+    } else {
+        try {
+            $decoded = (array)JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
+            Flight::set('admin', $decoded);
+            return TRUE;
+        } catch (\Exception $e) {
+            Flight::json(["message" => "Token authorization invalid"], 403);
+            return FALSE;
+        }
     }
-  }
 });
 
 

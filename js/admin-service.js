@@ -23,7 +23,6 @@ var AdminService = {
           localStorage.removeItem("token");
           localStorage.setItem("token", result.token);
           window.location.replace("admin.html");
-
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           alert(XMLHttpRequest.responseJSON.message);

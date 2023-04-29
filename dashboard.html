@@ -167,7 +167,7 @@
           });
   
           $.ajax({
-            url: "rest/reports",
+            url: "rest/locked/reports",
             type: "GET",
             beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -331,7 +331,7 @@
           });
           
           $.ajax({
-            url: "rest/reports",
+            url: "rest/locked/reports",
             type: "GET",
             beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -507,6 +507,10 @@
   </body>
   
   <script>
+      
+
+
+
     var token = localStorage.getItem("token");
       if (token){
           NewsService.init();

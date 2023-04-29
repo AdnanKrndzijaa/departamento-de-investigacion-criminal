@@ -13,7 +13,7 @@ var ReportsService = {
 
     list: function() {
         $.ajax({
-            url: "rest/reports",
+            url: "rest/locked/reports",
             type: "GET",
             beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -57,7 +57,7 @@ var ReportsService = {
         $('.reports-button').attr('disabled', true);
         $('#report-item').html('loading...');
         $.ajax({
-            url: "rest/reports/" + id,
+            url: "rest/locked/reports/" + id,
             type: "GET",
             beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -113,7 +113,7 @@ var ReportsService = {
     get: function(id) {
         $('.reports-button').attr('disabled', true);
         $.ajax({
-            url: "rest/reports/" + id,
+            url: "rest/locked/reports/" + id,
             type: "GET",
             beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -136,20 +136,6 @@ var ReportsService = {
         }});
     },
 
-    add: function(reports) {
-        $.ajax({
-            contentType: "application/json",
-            url: 'rest/reports',
-            type: 'POST',
-            data: JSON.stringify(reports),
-            dataType: "json",
-            success: function(result) {
-                $("#reportMessage").html(`+                    
-                <p class="text-success">Tip successfully submitted. We will take it into consideration soon.</p>
-                +`);
-            }
-        });
-    },
 
     update: function() {
         $('.save-reports-button').attr('disabled', true);
@@ -160,7 +146,7 @@ var ReportsService = {
     
         $.ajax({
             contentType: "application/json",
-            url: 'rest/reports/' + $('#id').val(),
+            url: 'rest/locked/reports/' + $('#id').val(),
             type: 'PUT',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -183,7 +169,7 @@ var ReportsService = {
     delete: function(id) {
         $('.reports-button').attr('disabled', true);
         $.ajax({
-            url: 'rest/reports/' + id,
+            url: 'rest/locked/reports/' + id,
             type: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));

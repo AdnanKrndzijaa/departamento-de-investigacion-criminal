@@ -3,6 +3,8 @@
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+//eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20ifQ.QlilK8nWk8q4MP1TG5Eof-5s-jGyA1AbTHEZtSjWSlE
+
 Flight::route('POST /login', function(){
     $login = Flight::request()->data->getData();
 
