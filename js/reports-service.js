@@ -103,7 +103,7 @@ var ReportsService = {
                         </div>
                     `;
             
-            $('#exampleModalR').modal('show');
+            $('#exampleModalR').show();
             $("#report-item").html(html);
             $('.reports-button').attr('disabled', false);
 

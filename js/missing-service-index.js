@@ -144,9 +144,8 @@ var MissingServiceIndex = {
                 </div>
                 `);
                 MissingServiceIndex.list();
-                $("#addMissingModal").modal("hide");
                 setTimeout(function(){
-                    $('#addMissingModal').modal('hide');
+                    $("#addMissingModal").hide();
                     $('.modal-backdrop').remove();  
                     $('#addMissingModal input[name="first_name"]').val("");
                     $('#addMissingModal input[name="last_name"]').val("");

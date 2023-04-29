@@ -12,7 +12,6 @@ var ReportsServiceIndex = {
     },
 
     add: function(reports) {
-        console.log(reports);
         $.ajax({
             contentType: "application/json",
             url: 'rest/reports',
@@ -20,7 +19,7 @@ var ReportsServiceIndex = {
             data: JSON.stringify(reports),
             dataType: "json",
             success: function(result) {
-                $("#addReportsModal").modal("hide");
+                $("#addReportsModal").hide();
 
             }
         });

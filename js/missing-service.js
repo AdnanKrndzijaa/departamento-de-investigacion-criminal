@@ -93,7 +93,7 @@ var MissingService = {
 
             
             
-            $("#exampleModalM").modal("show");
+            $("#exampleModalM").show();
             $("#missing-item").html(html);
             $('.missing-button').attr('disabled', false);
             
@@ -121,7 +121,7 @@ var MissingService = {
             $("#description").val(data.description);
             $("#physical_chars").val(data.physical_chars);
             $("#image").val(data.image);
-            $("#exampleModalM").modal("show");
+            $("#exampleModalM").show();
             $('.missing-button').attr('disabled', false);
         }});
     },
@@ -141,7 +141,7 @@ var MissingService = {
                 </div>
                 `);
                 MissingService.list();
-                $("#addMissingModal").modal("hide");
+                $("#addMissingModal").hide();
             }
         });
     },

@@ -90,9 +90,8 @@ var NewsService = {
                 </div>
                 `)
                 NewsService.list();
-                $("#addNewsModal").modal("hide");
                 setTimeout(function(){
-                    $('#addNewsModal').modal('hide');
+                    $('#addNewsModal').hide();
                     $('.modal-backdrop').remove();                    
                     $('#addNewsModal input[name="title"]').val("");
                     $('#addNewsModal textarea[name="description"]').val("");

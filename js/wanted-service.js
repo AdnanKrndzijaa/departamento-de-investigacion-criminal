@@ -73,16 +73,14 @@ var WantedService = {
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
-                console.log(result);
                 $("#wanted-list").html(`
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 `);
                 WantedService.list();
-                $("#addWantedModal").modal("hide");
                 setTimeout(function(){
-                    $('#addWantedModal').modal('hide');
+                    $('#addWantedModal').hide();
                     $('.modal-backdrop').remove();  
                     $('#addWantedModal input[name="first_name"]').val("");
                     $('#addWantedModal input[name="last_name"]').val("");
@@ -101,7 +99,6 @@ var WantedService = {
         wanted.last_name = $('#last_name').val();
         wanted.image = $('#image').val();
         wanted.description = $('#description').val();
-        console.log($('#description').val());
 
         $.ajax({
             contentType: "application/json",
