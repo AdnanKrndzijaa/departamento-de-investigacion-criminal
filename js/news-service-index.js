@@ -99,7 +99,7 @@ var NewsServiceIndex = {
 
                 
                 
-                $("#exampleModalN").show();
+                $("#exampleModalN").modal("show");
                 $("#news-item").html(html);
                 $('.news-button').attr('disabled', false);
                 

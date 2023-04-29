@@ -57,6 +57,8 @@ var NewsletterService = {
             dataType: "json",
             success: function(result) {
                 alert("You are now subscribed to out newsletter!");
+                $('#addNewsletterForm input[name="email"]').val("");
+
             }
         });
     },

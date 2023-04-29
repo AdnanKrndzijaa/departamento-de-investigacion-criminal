@@ -93,7 +93,7 @@ var MissingService = {
 
             
             
-            $("#exampleModalM").show();
+            $("#exampleModalM").modal("show");
             $("#missing-item").html(html);
             $('.missing-button').attr('disabled', false);
             

@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once '../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/services/NewsService.class.php';
 require_once __DIR__.'/services/ReportsService.class.php';
 require_once __DIR__.'/services/WantedService.class.php';
@@ -20,9 +20,11 @@ Flight::register('missingService', 'MissingService');
 
 
 Flight::map('error', function(Exception $ex){
-    // Handle error
-    Flight::json(['message' => $ex->getMessage()], 500);
+        // Handle exception
+        Flight::json(['message' => $ex->getMessage()], 500);
+    
 });
+
 
 /* utility function for reading query parameters from URL */
 Flight::map('query', function($name, $default_value = NULL){
@@ -36,8 +38,9 @@ Flight::route('/*', function(){
   //return TRUE;
   //perform JWT decode
   $path = Flight::request()->url;
-  if ($path == '/login' || $path == '/login.html' || $path == '/news' || $path == '/missing' || $path == '/wanted' || $path == '/newsletter') return TRUE; // exclude login route from middleware
-
+  if (preg_match('/^\/(login|login.html|news(?:\/\d+)?|missing(?:\/\d+)?|wanted(?:\/\d+)?|newsletter)|(POST \/reports)$/', $path)) {
+    return TRUE; // exclude certain routes from middleware
+  }
   $headers = getallheaders();
   if (@!$headers['Authorization']){
     Flight::json(["message" => "Authorization is missing"], 403);
@@ -46,6 +49,7 @@ Flight::route('/*', function(){
     try {
       $decoded = (array)JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
       Flight::set('user', $decoded);
+      error_log('User decoded and set: ' . print_r($decoded, true)); // Add debug statement
       return TRUE;
     } catch (\Exception $e) {
       Flight::json(["message" => "Authorization token is not valid"], 403);
