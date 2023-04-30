@@ -10,6 +10,10 @@ class ReportsService extends DICService{
         parent::__construct(new ReportsDao());
     }
 
+    public function get_by_name($name) {
+        return $this->dao->get_by_name($name);
+    }
+
 }
 
 ?>

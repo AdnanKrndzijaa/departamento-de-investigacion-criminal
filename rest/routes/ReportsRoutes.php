@@ -8,6 +8,11 @@ Flight::route('GET /locked/reports/@id', function($id){
     Flight::json(Flight::reportsService()->get_by_id($id));
 });
 
+Flight::route('GET /locked/search_name', function(){
+  $name = Flight::query('name');
+  Flight::json(Flight::reportsService()->get_by_name($name));
+});
+
 Flight::route('POST /reports', function(){
     Flight::json(Flight::reportsService()->add(Flight::request()->data->getData()));
 });

@@ -99,6 +99,53 @@ var MissingServiceIndex = {
         }});
     },
 
+    list_by_search: function() {
+        var search = document.getElementById('search-bar').value;
+        
+        // Check if search term is not empty
+        if (search.trim() !== '') {
+          $.ajax({
+            url: "rest/search_name_descm/?name_desc=" + search.trim(),
+            type: "GET",
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
+                $("#missing-list").html("");
+                var html = "";
+                $('#search-bar').val('');
+                
+                for (let i = data.length - 1; i>=0; i--) {
+                    var dateStrP = data[i].last_time_seen;
+                    var dateP = new Date(dateStrP);
+                    var optionsP = { month: 'short', day: 'numeric', year: 'numeric' };
+                    var formattedDateP = dateP.toLocaleDateString('en-US', optionsP);
+                    html += `
+                    <tr>
+                                    <th scope="row">`+data[i].id+`</th>
+                                    <td>`+data[i].first_name+" "+data[i].last_name+`</td>
+                                    <td><img style="width: 50px; height: 40px;" src="images/missing/`+data[i].image+`" alt=""></td>
+                                    <td>`+data[i].last_place_seen+ " - " + formattedDateP + `</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-primary missing-button" onClick="MissingServiceIndex.get(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger missing-button" onClick="MissingServiceIndex.delete(` + data[i].id + `)"><i class="fas fa-trash"></i></button>
+                                      </div>
+                                    </td>                            
+                                </tr>
+                    `;
+                    $("#missing-list").html(html);
+                }
+            },
+            error: function() {
+                AdminService.logout();
+            }
+          });
+        } else {
+            MissingServiceIndex.list();
+        }
+      },
+
 
     get: function(id) {
         $('.missing-button').attr('disabled', true);

@@ -17,7 +17,13 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="mb-0">
-
+                  <div class="d-sm-flex align-items-end justify-content-end">
+                    <div class="ml-auto text-right">
+                      <input type="text" class="form-control-sm mr-lg-2" id="search-bar" placeholder="Search reports ..." style="width: 300dp;">
+                      <button type="button" class="btn btn-primary btn-sm" onclick="event.preventDefault(); ReportsService.list_by_search();">Search</button>
+                    </div>
+                  </div>
+                  <br>
                   <table class="table table-hover table-sm table-responsive w-100 d-block d-md-table">
                       <thead>
                         <tr>

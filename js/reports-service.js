@@ -110,6 +110,59 @@ var ReportsService = {
     }});
     },
 
+    list_by_search: function() {
+        var search = document.getElementById('search-bar').value;
+        
+        // Check if search term is not empty
+        if (search.trim() !== '') {
+          $.ajax({
+            url: "rest/locked/search_name/?name=" + search.trim(),
+            type: "GET",
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(data) {
+                $("#reports-list").html("");
+                var html = "";
+                $('#search-bar').val('');
+                
+                for (let i = data.length - 1; i>=0; i--) {
+                    if (data[i].status == "finished") {
+                        var reportStatus = "success";
+                    } else if (data[i].status == "canceled") {
+                        reportStatus = "danger";
+                    } else if (data[i].status == null) {
+                        reportStatus = "info";
+                    } else if (data[i].status == "none") {
+                        reportStatus = "info";
+                    } else if (data[i].status == "in-process") {
+                        reportStatus = "secondary";
+                    } else {
+                        reportStatus = "info";
+                    }
+                    html += `
+                    <tr>
+                                    <th scope="row">`+data[i].id+`</th>
+                                    <td>`+data[i].first_name+ " " +data[i].last_name+`</td>
+                                    <td>`+data[i].category+`</td>
+                                    <td><span class="badge badge-`+reportStatus+`">` + data[i].status + `</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-circle reports-button" onClick="ReportsService.list_by_id(` + data[i].id + `)"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                    `;
+                    $("#reports-list").html(html);
+                }
+            },
+            error: function() {
+                AdminService.logout();
+            }
+          });
+        } else {
+            ReportsService.list();
+        }
+      },
+
     get: function(id) {
         $('.reports-button').attr('disabled', true);
         $.ajax({

@@ -10,6 +10,10 @@ class MissingService extends DICService{
         parent::__construct(new MissingDao());
     }
 
+    public function get_by_name_descm($name_desc) {
+        return $this->dao->get_by_name_descm($name_desc);
+    }
+
 }
 
 ?>

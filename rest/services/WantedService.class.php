@@ -10,6 +10,10 @@ class WantedService extends DICService{
         parent::__construct(new WantedDao());
     }
 
+    public function get_by_name_desc($name_desc) {
+        return $this->dao->get_by_name_desc($name_desc);
+    }
+
 }
 
 ?>
