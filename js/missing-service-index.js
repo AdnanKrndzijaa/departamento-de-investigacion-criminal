@@ -129,7 +129,7 @@ var MissingServiceIndex = {
     add: function(missing) {
         $.ajax({
             contentType: "application/json",
-            url: 'rest/missing',
+            url: 'rest/locked/missing',
             type: 'POST',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -182,7 +182,7 @@ var MissingServiceIndex = {
 
         $.ajax({
             contentType: "application/json",
-            url: 'rest/missing/' + $('#id').val(),
+            url: 'rest/locked/missing/' + $('#id').val(),
             type: 'PUT',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -207,7 +207,7 @@ var MissingServiceIndex = {
     delete: function(id) {
         $('.missing-button').attr('disabled', true);
         $.ajax({
-            url: 'rest/missing/' + id,
+            url: 'rest/locked/missing/' + id,
             type: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));

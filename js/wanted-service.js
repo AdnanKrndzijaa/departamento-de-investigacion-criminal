@@ -65,7 +65,7 @@ var WantedService = {
     add: function(wanted) {
         $.ajax({
             contentType: "application/json",
-            url: 'rest/wanted',
+            url: 'rest/locked/wanted',
             type: 'POST',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -102,7 +102,7 @@ var WantedService = {
 
         $.ajax({
             contentType: "application/json",
-            url: 'rest/wanted/' + $('#id').val(),
+            url: 'rest/locked/wanted/' + $('#id').val(),
             type: 'PUT',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -127,7 +127,7 @@ var WantedService = {
     delete: function(id) {
         $('.wanted-button').attr('disabled', true);
         $.ajax({
-            url: 'rest/wanted/' + id,
+            url: 'rest/locked/wanted/' + id,
             type: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));

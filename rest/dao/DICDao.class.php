@@ -4,7 +4,7 @@ require_once __DIR__.'/../Config.class.php';
 
 class DICDao {
 
-    private $conn;
+    protected $conn;
     private $table_name;
 
     public function __construct($table_name) {
@@ -25,6 +25,7 @@ class DICDao {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
     }
+
 
     public function get_by_id($id) {
         $stmt = $this->conn->prepare("SELECT * FROM ".$this->table_name." WHERE id=:id");

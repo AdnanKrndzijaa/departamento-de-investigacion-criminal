@@ -69,66 +69,7 @@
     </div>
     <!-- End of Content Wrapper -->
 
-    <script>
-      $.get("rest/admin", function(data) {
-            $("#dashboard-cards").html("");
-            var html = "";
-            var admin = 0;
-            var employee = 0;
-            
-            for (let i = 0; i<data.length - 1; i--) {
-                if (data[i].type == "admin") {
-                    admin++;
-                } else {
-                    employee++;
-                }
-
-                html += `
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered Admin</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                              <h4>Total Admin: `+admin+`</h4>
-
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-4">
-                      <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Registered Employees</div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                              <h4>Total Admin: `+employee+`</h4>
-
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    `;
-                
-                $("#dashboard-cards").html(html);
-            }
-        });
-
-    </script>
+  
 
   
 <div class="modal fade" id="exampleModalR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

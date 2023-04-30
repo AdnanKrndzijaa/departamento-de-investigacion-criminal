@@ -129,7 +129,7 @@ var MissingService = {
     add: function(missing) {
         $.ajax({
             contentType: "application/json",
-            url: 'rest/missing',
+            url: 'rest/locked/missing',
             type: 'POST',
             data: JSON.stringify(missing),
             dataType: "json",
@@ -158,7 +158,7 @@ var MissingService = {
 
         $.ajax({
             contentType: "application/json",
-            url: 'rest/missing/' + $('#id').val(),
+            url: 'rest/locked/missing/' + $('#id').val(),
             type: 'PUT',
             data: JSON.stringify(missing),
             dataType: "json",
@@ -180,7 +180,7 @@ var MissingService = {
     delete: function(id) {
         $('.missing-button').attr('disabled', true);
         $.ajax({
-            url: 'rest/missing/' + id,
+            url: 'rest/locked/missing/' + id,
             type: 'DELETE',
             success: function(result) {
                 $("#missing-list").html();
