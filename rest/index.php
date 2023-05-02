@@ -3,7 +3,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
+use Firebase\JWT\SignatureInvalidException;
 use Firebase\JWT\Key;
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -41,6 +43,7 @@ Flight::map('header', function($name){
 });
 
 
+
   Flight::route('/locked/*', function(){
       
     /*
@@ -56,13 +59,17 @@ Flight::map('header', function($name){
         return FALSE;
     } else {
         try {
-            $decoded = (array)JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
+            $decoded = JWT::decode($headers['Authorization'], new Key(Config::JWT_SECRET(), 'HS256'));
+            // Token is valid
             Flight::set('admin', $decoded);
             return TRUE;
         } catch (\Exception $e) {
+            // Other errors
             Flight::json(["message" => "Token authorization invalid"], 403);
             return FALSE;
         }
+
+      
     }
 });
 
