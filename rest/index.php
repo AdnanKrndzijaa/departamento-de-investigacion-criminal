@@ -66,6 +66,12 @@ Flight::map('header', function($name){
     }
 });
 
+Flight::route('GET /docs.json', function() {
+  $openapi = \OpenApi\scan('routes');
+  header('Content-Type: application/json');
+  echo $openapi->toJson();
+});
+
 
 require_once __DIR__.'/routes/NewsRoutes.php';
 require_once __DIR__.'/routes/NewsletterRoutes.php';

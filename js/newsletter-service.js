@@ -13,7 +13,7 @@ var NewsletterService = {
 
     list: function() {
         $.ajax({
-            url: "rest/newsletter",
+            url: "rest/locked/newsletter",
             type: "GET",
             beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -41,7 +41,7 @@ var NewsletterService = {
 
     get: function(id) {
         $('.newsletter-button').attr('disabled', true);
-        $.get('rest/newsletter/' + id, function(data) {
+        $.get('rest/locked/newsletter/' + id, function(data) {
             $("#id").val(data.id);
             $("#email").val(data.email);
             $('.newsletter-button').attr('disabled', false);
@@ -66,7 +66,7 @@ var NewsletterService = {
     delete: function(id) {
         $('.newsletter-button').attr('disabled', true);
         $.ajax({
-            url: 'rest/newsletter/' + id,
+            url: 'rest/locked/newsletter/' + id,
             type: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
