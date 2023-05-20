@@ -3,16 +3,16 @@
 class Config {
 
   public static function DB_HOST(){
-    return Config::get_env("DB_HOST", "localhost");
+    return Config::get_env("DB_HOST", "sql7.freemysqlhosting.net");
   }
   public static function DB_USERNAME(){
-    return Config::get_env("DB_USERNAME", "root");
+    return Config::get_env("DB_USERNAME", "sql7619727");
   }
   public static function DB_PASSWORD(){
-    return Config::get_env("DB_PASSWORD", "12345adnan");
+    return Config::get_env("DB_PASSWORD", "cA7njujdHB");
   }
   public static function DB_SCHEME(){
-    return Config::get_env("DB_SCHEME", "dic_database");
+    return Config::get_env("DB_SCHEME", "sql7619727");
   }
   public static function DB_PORT(){
     return Config::get_env("DB_PORT", "3306");
