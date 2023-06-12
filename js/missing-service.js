@@ -37,7 +37,8 @@ var MissingService = {
                                 <div style="margin-left: 20px; margin-right: 20px;">
                                     <span class="text-info"><strong>MISSING</strong></span><br>
                                     <span class="text-light"><strong>Name:</strong> `+data[i].first_name + " " + data[i].last_name+`</span><br>
-                                    <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDateP + `</span>
+                                    <span class="text-light"><strong>Disappearance:</strong> `+data[i].last_place_seen+ " - " + formattedDateP + `</span><br>
+                                    <span class="text-light"><strong>Contact:</strong> `+data[i].contact + `</span>
                                     <br>
                                 </div>
                             </div>

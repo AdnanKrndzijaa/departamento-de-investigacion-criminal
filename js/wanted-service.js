@@ -152,8 +152,6 @@ var WantedService = {
             data: JSON.stringify(wanted),
             dataType: "json",
             success: function(result) {
-                console.log(result);
-
                 $("#exampleModalW").modal("hide");
                 $("#wanted-list").html(`
                 <div class="spinner-border" role="status">

@@ -151,13 +151,18 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                   
-               ADMIN
                   
                 </span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="images/logoavatar.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item">
+                  <strong>ID:</strong> <span id="userId"></span>
+                </a>
+                <a class="dropdown-item">
+                  <strong>Email:</strong> <span id="userEmail"></span>
+                </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
@@ -224,7 +229,8 @@
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="lib/lightbox/js/lightbox.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jwt-decode/3.1.2/jwt-decode.min.js"></script>
+<script src="js/jwt-token.js"></script>
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
@@ -234,5 +240,25 @@
  
   
 </body>
+
+<script>
+ // Get the token from the cookie or any other storage mechanism
+var token = localStorage.getItem("token"); // Replace with your method to retrieve the token
+
+// Decode the token payload
+var decodedToken = jwt_decode(token);
+
+// Access the information from the decoded payload
+var userId = decodedToken.id;
+var userEmail = decodedToken.email;
+// Access other properties as needed
+
+// Display the information in the HTML elements
+document.getElementById("userId").textContent = userId;
+document.getElementById("userEmail").textContent = userEmail;
+// Update other HTML elements as needed
+
+
+</script>
 
 </html>
